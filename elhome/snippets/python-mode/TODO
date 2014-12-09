@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: TODO entry
+# key: #T
+# --
+# TODO(emilon): $0

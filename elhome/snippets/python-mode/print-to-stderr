@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: print to stderr
+# key: PE
+# --
+print >> sys.stderr, "$0"

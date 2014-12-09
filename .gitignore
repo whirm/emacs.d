@@ -1,0 +1,7 @@
+*.elc
+/byte-cache/
+/elpa/
+/org-clock-save.el
+/recentf
+/tramp
+/var/

@@ -1,0 +1,21 @@
+(:name flymake-python
+       :description "Highlight Python syntax, style and unit test errors in Emacs."
+       :type github
+       :pkgname "akaihola/flymake-python"
+       :depends (smart-operator autopair)
+       :prepare  (progn
+                   (setq flymake-python-pyflymake-path (file-truename "pyflymake.py"))
+                   (when (load "flymake" t)
+                     (defun flymake-pylint-init ()
+                       (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                                          'flymake-create-temp-inplace))
+                              (local-file (file-relative-name
+                                           temp-file
+                                           (file-name-directory buffer-file-name))))
+                         (list flymake-python-pyflymake-path (list local-file))))
+                     (add-to-list 'flymake-allowed-file-name-masks
+                                  '("\\.py\\'" flymake-pylint-init)))
+                   (add-hook 'find-file-hook 'flymake-find-file-hook)
+
+                   )
+       )

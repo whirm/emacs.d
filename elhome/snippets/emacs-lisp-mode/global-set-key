@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: global-set-key
+# key: gsk
+# --
+
+(global-set-key (kbd "C-${2:$$(edmacro-insert-key)}" '$1)

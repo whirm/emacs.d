@@ -1,0 +1,6 @@
+(:name gimme
+       :website "https://github.com/konr/GIMME"
+       :description " XMMS2 client for GNU Emacs"
+       :type github
+       :pkgname  "konr/GIMME"
+)
