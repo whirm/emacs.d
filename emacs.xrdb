@@ -1,0 +1,12 @@
+! {{ EMACS
+! better to turn this off here than in .emacs
+! where it would show the bars and then hide them afterwards:
+Emacs*menuBar:          off
+Emacs*toolBar:          off
+! no scrollbars for me
+Emacs*verticalScrollBars: off
+Emacs*horizontalScrollBars: off
+! nice font
+Emacs*font: Terminus 9
+!Emacs*font: -*-terminus-bold-r-*-*-*-*-100-100-*-*-*-* !Too big
+!Emacs*font: -*-terminus-*-r-*-*-14-*-*-*-*-*-*-* !Too big
