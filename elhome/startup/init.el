@@ -29,6 +29,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Looks
 
+;; Grey mouse cursor
+(set-mouse-color "grey")
+
 ;; Cursor is a line instead of a box
 (setq-default cursor-type 'bar)
 
