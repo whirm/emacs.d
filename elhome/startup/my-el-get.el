@@ -578,6 +578,9 @@ command buffer, in which case returns the buffer directly."
                          ))
          (:name pyvenv) ;; elpy fails to install if this is not installed before?
          (:name virtualenv)
+         (:name auto-complete
+                ;; kill the recipe's post-init so it doesn't enable auto-complete-mode globally as I use company-mode.
+                :post-init ())
          (:name company-mode
                 ;;:checkout "0.8.0"
                 :after (progn
