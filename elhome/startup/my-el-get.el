@@ -600,31 +600,6 @@ command buffer, in which case returns the buffer directly."
                          (elpy-enable)
                          (elpy-use-ipython)
 
-                         ;; ;; Temporary hack to see if if tixes lagginess
-                         ;; (defvar elpy--ac-init-lock nil)
-                         ;; (defun elpy--ac-init ()
-                         ;;   "Initialize a completion.
-
-                         ;;   This will call Python in the background and initialize
-                         ;;   `elpy--ac-cache' when it returns."
-                         ;;   (when (and (not elpy--ac-init-lock)
-                         ;;              (not (eq (python-syntax-context-type)
-                         ;;                       'comment)))
-                         ;;     (let ((elpy--ac-init-lock t))
-                         ;;       (elpy-rpc-get-completions
-                         ;;        (lambda (result)
-                         ;;          (setq elpy--ac-cache nil)
-                         ;;          (dolist (completion result)
-                         ;;            (let ((name (car completion))
-                         ;;                  (doc (cadr completion)))
-                         ;;              (when (not (string-prefix-p "_" name))
-                         ;;                (push (cons (concat ac-prefix name)
-                         ;;                            doc)
-                         ;;                      elpy--ac-cache))))
-                         ;;          (ac-start))
-                         ;;        (lambda (err)
-                         ;;          (message "Can't get completions: %s" err))))))
-
                          ;;Disable hook as it has a fucked up keybind
                          (remove-hook 'python-mode-hook 'pylint-python-hook)
                          ;;(add-hook 'python-mode-hook 'py-autopair-mode-on)
