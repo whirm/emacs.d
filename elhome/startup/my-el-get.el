@@ -183,6 +183,11 @@
                                       ))))
 
          (:name lisppaste)
+         (:name anchored-transpose
+                :after (progn
+                         (global-set-key (kbd "C-c M-t") 'anchored-transpose)
+                         )
+                )
 
          (:name indicators)
 
