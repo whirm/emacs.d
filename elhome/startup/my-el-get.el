@@ -302,6 +302,7 @@
                          (require 'yasnippet)
                          (yas-global-mode 1)
                          (yas/load-directory "~/.emacs.d/elhome/snippets")
+                         (setq yas-snippet-dirs (delete "~/.emacs.d/snippets" yas-snippet-dirs))
                          ))
          (:name popwin
                 :after (progn
