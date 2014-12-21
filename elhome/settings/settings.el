@@ -53,6 +53,7 @@
  '(custom-safe-themes
    (quote
     ("6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "025354235e98db5e7fd9c1a74622ff53ad31b7bde537d290ff68d85665213d85" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "6fe6ab4abe97a4f13533e47ae59fbba7f2919583f9162b440dd06707b01f7794" default)))
+ '(default-input-method "catalan-prefix")
  '(dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$|.*\\.pyc$")
  '(ecb-options-version "2.40")
  '(ecb-source-path (quote ("~/code/")))
@@ -62,6 +63,7 @@
     (elpy-module-company elpy-module-eldoc elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-sane-defaults)))
  '(elpy-rpc-project-specific t)
  '(elpy-test-runner (quote elpy-test-nose-runner))
+ '(eww-download-directory "~/INCOMING/")
  '(face-font-family-alternatives
    (quote
     (("Monospace" "Ttyp0" "courier" "fixed")
@@ -117,6 +119,7 @@
     (header-title header-blank header-file-name header-description header-author header-maintainer header-copyright header-creation-date header-commentary header-blank header-blank header-blank header-end-line header-history header-blank header-blank header-end-line header-free-software header-code header-eof)))
  '(minimap-width-fraction 0.1)
  '(org-clock-persist-file "~/.emacs.d/var/org-clock-save.el")
+ '(org-id-locations-file "~/.emacs.d/var/.org-id-locations")
  '(popwin-mode t)
  '(popwin:popup-window-height 0.4)
  '(predictive-auto-learn t t)
