@@ -21,7 +21,12 @@
                 )
          (:name rich-minority)
          (:name emacs-async)
+         (:name rw-ispell
+                :type elpa)
+         (:name rw-language-and-country-codes
+                :type elpa)
          (:name rw-hunspell
+                :type elpa
                 :after (progn
                          (setq ispell-extra-args (quote ("--sug-mode=ultra")))
                          (setq ispell-program-name "hunspell")
