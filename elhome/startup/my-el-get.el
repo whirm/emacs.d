@@ -4,6 +4,7 @@
        el-get-sources
        '(
          (:name unicode-progress-reporter ;; Has to be loaded before smart-mode-line
+                :type elpa
                 :after (progn
                          (unicode-progress-reporter-setup)
                          )
@@ -111,7 +112,6 @@
                                                            ))
 
                          (defalias 'grep 'helm-do-grep)
-
                          )
                 )
          ;; wgrep-helm won't work if this is not manually loaded first?
