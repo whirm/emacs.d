@@ -1,4 +1,5 @@
 *.elc
+/.cask/
 /byte-cache/
 /elpa/
 /org-clock-save.el
