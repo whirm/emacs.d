@@ -38,11 +38,6 @@
  '(column-number-mode t)
  '(company-auto-complete (quote (quote company-explicit-action-p)))
  '(company-auto-complete-chars (quote (41)))
- '(company-backends
-   (quote
-    (company-elisp company-bbdb company-nxml company-css company-semantic company-clang company-xcode company-ropemacs company-cmake company-capf
-                   (company-dabbrev-code company-gtags company-etags company-keywords)
-                   company-oddmuse company-files company-dabbrev)))
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case t)
  '(company-minimum-prefix-length 1)

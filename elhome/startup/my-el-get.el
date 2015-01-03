@@ -3,6 +3,10 @@
       (append
        el-get-sources
        '(
+         (:name ucs-utils
+                :type elpa)
+         (:name list-utils
+                :type elpa)
          (:name unicode-progress-reporter ;; Has to be loaded before smart-mode-line
                 :type elpa
                 :after (progn
@@ -308,6 +312,7 @@
                          (yas-global-mode 1)
                          (yas/load-directory "~/.emacs.d/elhome/snippets")
                          (setq yas-snippet-dirs (delete "~/.emacs.d/snippets" yas-snippet-dirs))
+                         (add-to-list 'yas-snippet-dirs '"~/.emacs.d/elhome/snippets")
                          ))
          (:name popwin
                 :after (progn
@@ -322,6 +327,7 @@
                          (add-hook 'prog-mode-hook 'auto-make-header t)
                          )
                 )
+         (:name cask)
          (:name flycheck
                 :after (progn
                          (global-flycheck-mode 1)
@@ -367,7 +373,16 @@
          (:name markdown-mode
                 :after (progn
                          (require 'markdown-mode)))
+         (:name weechat)
          ;; (:name erc
+         ;; │18:51:40        whirm | is anybody using ERC/circe with client side cert auth?
+         ;; │18:55:20  wgreenhouse | whirm: it's possible with ERC, through tweaking erc-server-connect-function
+         ;; │18:55:35  wgreenhouse | to a version that supplies a :client-certificate arg to open-network-stream
+         ;; │18:55:47  wgreenhouse | probably you could do the same hack with circe
+         ;; │18:56:42        whirm | wgreenhouse: ok, I'll try that. Thanks
+         ;; │18:56:48  wgreenhouse | whirm: I may try it soon for ERC on OFTC, I'll let you know if it worked.
+         ;; │19:02:01   fledermaus | whirm: passing a :client-certificate value of t will automatically search auth-sources for a certificate
+         ;; │                      | and key, so you could put those in your ~/.netrc and it would magically work.
          ;;        :after (progn
          ;;                 (require 'erc)
          ;;                 (defun irc-connect()
