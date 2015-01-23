@@ -1996,7 +1996,19 @@ Late deadlines first, then scheduled, then non-late deadlines"
                                            ;; also export the agenda views
                                            ;;(org-store-agenda-views)
                                            ))
-;;^
+
+;; show appointment notifications trough DBUS notification API
+(defun wh-appt-display (min-to-app new-time msg)
+  (notify
+    (format "Appointment in %s minutes" min-to-app)
+    (format "\n%s" msg)
+    :timeout 60000
+    )
+  )
+
+(setq appt-disp-window-function (function wh-appt-display))
 
 
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
+
+;;^
