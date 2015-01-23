@@ -646,6 +646,9 @@ command buffer, in which case returns the buffer directly."
                           elfeed-db-directory (concat user-emacs-directory "/var/elfeed/")
                           elfeed-sort-order (quote ascending)
                           )))
+         (:name align
+                :after (progn
+                         (require 'align)))
          )))
 
 (setq my-packages
@@ -654,7 +657,6 @@ command buffer, in which case returns the buffer directly."
        (mapcar 'el-get-source-name el-get-sources)
        '(
          ;; rudel  http://www.emacswiki.org/emacs/Rudel (gobby compatible collaborative text editor)
-         align
          android-mode
          auto-install
          autopair
