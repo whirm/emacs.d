@@ -55,7 +55,7 @@
  '(elpy-default-minor-modes (quote (eldoc-mode yas-minor-mode subword-mode)))
  '(elpy-modules
    (quote
-    (elpy-module-company elpy-module-eldoc elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-sane-defaults)))
+    (elpy-module-company elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-sane-defaults)))
  '(elpy-rpc-project-specific t)
  '(elpy-test-runner (quote elpy-test-nose-runner))
  '(eww-download-directory "~/INCOMING/")
