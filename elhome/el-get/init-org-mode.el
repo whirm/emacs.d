@@ -2007,7 +2007,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
   )
 
 (setq appt-disp-window-function (function wh-appt-display))
-
+(defun appt-delete-window ())
 
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
