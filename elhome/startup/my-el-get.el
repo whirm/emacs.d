@@ -66,13 +66,14 @@
                                                          (undo-tree-mode t)
                                                          ))))
          (:name bbdb)
-         (:name org-mode)
          ;; (:name org-pomodoro
          ;;        :after (progn
          ;;                 (add-hook 'org-clock-in-hook (lambda ()
          ;;                                                (if (not org-timer-current-timer)
          ;;                                                    (org-pomodoro))))
          ;;                 ))
+         (:name org-mode
+                :checkout "release_8.2.10")
          (:name org-sync)
          (:name mu4e)
          (:name magit
