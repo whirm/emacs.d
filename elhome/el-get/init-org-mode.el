@@ -214,7 +214,7 @@
   (interactive)
   (save-excursion
     (beginning-of-line 0)
-    (org-remove-empty-drawer-at (point))))
+    (org-remove-empty-drawer-at "LOGBOOK" (point)))) ;add LOGBOOK as upstream has an old org-mode version or smth
 
 (add-hook 'org-clock-out-hook 'bh/remove-empty-drawer-on-clock-out 'append)
 
