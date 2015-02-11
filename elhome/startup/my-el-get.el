@@ -462,11 +462,6 @@
                                                      ))
                          )
                 )
-         (:name projectile
-                :checkout "b41017f795b7b13c2faaa5573574947873be0253" ;; either projectile or perspective recent versions break the mode line indicator (only shows main)
-                :after (progn
-                         (projectile-global-mode t)
-                         ))
          (:name perspective
                 :checkout "6c8cd35759039626815a0c9f85337eed75e5af4a" ;; either projectile or perspective recent versions break the mode line indicator (only shows main)
                 :after (progn
@@ -504,6 +499,12 @@
                            (custom-persp "feeds"
                                          (elfeed)))
                          (define-key persp-mode-map (kbd "C-x p f") 'custom-persp/feeds)
+                         ))
+         (:name projectile
+                ;; :checkout "b41017f795b7b13c2faaa5573574947873be0253"
+                :checkout "74afdbbdbb5ee472571d3741fe64d3832881e5ef"
+                :after (progn
+                         (projectile-global-mode t)
                          ))
          (:name iedit)
          (:name web-mode
