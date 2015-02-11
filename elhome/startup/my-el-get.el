@@ -424,33 +424,33 @@
                          ))
          (:name tuareg-mode
                 :after (progn
-                          (add-hook 'tuareg-mode-hook (lambda ()
-                                                        (setq tuareg-interactive-program "utop")
-                                                        ))
-                          ))
+                         (add-hook 'tuareg-mode-hook (lambda ()
+                                                       (setq tuareg-interactive-program "utop")
+                                                       ))
+                         ))
          (:name utop)
          (:name merlin
                 :after (progn
-                          ;; Add opam emacs directory to the load-path
-                          (setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
-                          (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
+                         ;; Add opam emacs directory to the load-path
+                         (setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
+                         (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
 
-                          ;; Load merlin-mode
-                          (require 'merlin)
+                         ;; Load merlin-mode
+                         (require 'merlin)
 
-                          ;; Start merlin on ocaml files
-                          (add-hook 'tuareg-mode-hook 'merlin-mode t)
-                          (add-hook 'caml-mode-hook 'merlin-mode t)
+                         ;; Start merlin on ocaml files
+                         (add-hook 'tuareg-mode-hook 'merlin-mode t)
+                         (add-hook 'caml-mode-hook 'merlin-mode t)
 
-                          ;; Enable auto-complete
-                          (setq merlin-use-auto-complete-mode 'easy)
+                         ;; Enable auto-complete
+                         (setq merlin-use-auto-complete-mode 'easy)
 
-                          ;; Use opam switch to lookup ocamlmerlin binary
-                          (setq merlin-command 'opam)
+                         ;; Use opam switch to lookup ocamlmerlin binary
+                         (setq merlin-command 'opam)
 
-                          ;; Take a look at https://github.com/the-lambda-church/merlin for more information
+                         ;; Take a look at https://github.com/the-lambda-church/merlin for more information
 
-                          ))
+                         ))
          (:name rainbow-mode
                 :type elpa
                 ;; This minor mode sets background color to strings that match color
@@ -500,9 +500,9 @@
                          ;;                 (find-file "~/.emacs.d/init.el")))
                          ;; (define-key persp-mode-map (kbd "C-x p e") 'custom-persp/emacs)
                          (defun custom-persp/feeds ()
-                            (interactive)
-                            (custom-persp "feeds"
-                                          (elfeed)))
+                           (interactive)
+                           (custom-persp "feeds"
+                                         (elfeed)))
                          (define-key persp-mode-map (kbd "C-x p f") 'custom-persp/feeds)
                          ))
          (:name iedit)
