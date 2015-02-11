@@ -56,7 +56,7 @@
   (require 'helm-misc)
   (require 'helm-projectile)
   (let ((helm-ff-transformer-show-only-basename nil))
-    (helm-other-buffer '(helm-source-fixme
+    (helm-other-buffer '(;; helm-source-fixme
                          helm-source-projectile-buffers-list
                          helm-source-projectile-recentf-list
                          helm-source-projectile-files-list
