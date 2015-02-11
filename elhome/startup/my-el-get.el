@@ -463,7 +463,8 @@
                          )
                 )
          (:name perspective
-                :checkout "6c8cd35759039626815a0c9f85337eed75e5af4a" ;; either projectile or perspective recent versions break the mode line indicator (only shows main)
+                :checkout "b37f9e54f8cace9949565cb0180e06d4625152ec"
+                ;; :checkout "6c8cd35759039626815a0c9f85337eed75e5af4a"
                 :after (progn
                          (require 'perspective)
                          (persp-mode t)
