@@ -626,6 +626,7 @@ command buffer, in which case returns the buffer directly."
          fuzzy
          gist
          git-modes
+         git-timemachine
          guru-mode
          helm-c-yasnippet
          jam-mode
