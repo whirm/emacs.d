@@ -84,7 +84,9 @@
          (:name org-sync)
          (:name mu4e)
          (:name magit
-                ;;:checkout "next"
+                :checkout "next"
+                :build ()               ; Kill "make docs" as the new magit makefile doesn't have this target
+                :info ()                ; idem
                 :after (progn
                          (global-set-key (kbd "C-x C-z") 'magit-status)
 
