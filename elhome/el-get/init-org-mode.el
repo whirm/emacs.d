@@ -1999,9 +1999,9 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 ;; show appointment notifications trough DBUS notification API
 (defun wh-appt-display (min-to-app new-time msg)
-  (notify
-    (format "Appointment in %s minutes" min-to-app)
-    (format "\n%s" msg)
+  (notifications-notify
+    :title (format "Appointment in %s minutes" min-to-app)
+    :body (format "\n%s" msg)
     :timeout 60000
     )
   )

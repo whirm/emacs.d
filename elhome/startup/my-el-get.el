@@ -3,7 +3,6 @@
       (append
        el-get-sources
        '(
-         (:name notify)
          (:name ucs-utils
                 :type elpa)
          (:name list-utils

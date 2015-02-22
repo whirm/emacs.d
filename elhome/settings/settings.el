@@ -22,6 +22,8 @@
  '(ahs-default-range (quote ahs-range-whole-buffer))
  '(ahs-exclude (quote ((python-mode . "(self|def)"))))
  '(ahs-idle-interval 0.3)
+ '(alert-default-style (quote libnotify))
+ '(alert-user-configuration nil)
  '(auto-save-list-file-prefix "~/.emacs.d/var/auto-save-list/.saves-")
  '(autopep8-args " --max-line-length=120 --ignore=E501 -a -")
  '(autopep8-path "/usr/bin/autopep8")
