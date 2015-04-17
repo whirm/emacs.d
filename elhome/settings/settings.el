@@ -116,6 +116,8 @@
  '(minimap-width-fraction 0.1)
  '(org-clock-persist-file "~/.emacs.d/var/org-clock-save.el")
  '(org-id-locations-file "~/.emacs.d/var/.org-id-locations")
+ '(org-pomodoro-format ">%s<")
+ '(org-pomodoro-play-sounds nil)
  '(popwin-mode t)
  '(popwin:popup-window-height 0.4)
  '(predictive-auto-learn t t)
