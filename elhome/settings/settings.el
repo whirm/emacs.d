@@ -227,6 +227,7 @@
  '(magit-diff-add ((t (:foreground "pale green"))))
  '(magit-diff-del ((t (:foreground "indian red"))))
  '(magit-item-highlight ((t (:background "gray27"))))
+ '(makefile-space ((t (:background "brown4"))))
  '(match ((t (:background "midnight blue"))))
  '(minimap-active-region-background ((t (:background "gray6"))) t)
  '(mumamo-background-chunk-major ((t (:background "#000025"))) t)
