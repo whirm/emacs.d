@@ -23,6 +23,8 @@
 ;; (toggle-debug-on-quit)
 ;; (toggle-debug-on-error)
 
+(server-start)
+
 ;; EO Pre-init
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
