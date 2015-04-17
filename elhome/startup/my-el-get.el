@@ -67,7 +67,9 @@
                                                          ))))
          (:name bbdb)
          (:name org-mode
-                :checkout "release_8.2.10")
+                ;; :checkout "release_8.2.10"
+                ;; :checkout "release_8.3beta" ;broken
+                :checkout "release_8.1.2")
          (:name org-pomodoro
                 :after (progn
                          (require 'org-pomodoro)
