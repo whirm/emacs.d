@@ -1149,7 +1149,9 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 (defun bh/org-agenda-to-appt ()
   (interactive)
   (setq appt-time-msg-list nil)
-  (org-agenda-to-appt))
+  (let ((org-agenda-inhibit-startup t))
+    (org-agenda-to-appt)
+    ))
 
 ;; Rebuild the reminders everytime the agenda is displayed
 (add-hook 'org-finalize-agenda-hook 'bh/org-agenda-to-appt 'append)
