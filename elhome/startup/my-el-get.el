@@ -278,6 +278,7 @@
                          (yas/load-directory "~/.emacs.d/elhome/snippets")
                          (setq yas-snippet-dirs (delete "~/.emacs.d/snippets" yas-snippet-dirs))
                          (add-to-list 'yas-snippet-dirs '"~/.emacs.d/elhome/snippets")
+                         (global-set-key (kbd "<C-tab>") 'helm-yas-complete)
                          ))
          (:name popwin
                 :after (progn
