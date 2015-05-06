@@ -134,6 +134,9 @@
 
 (global-set-key "\C-w" 'backward-kill-word)
 
+;; Set a hotkey for revert-buffer
+(global-set-key (kbd "C-S-r") 'revert-buffer)
+
 ;; Clean trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
