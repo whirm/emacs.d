@@ -273,6 +273,7 @@
                 (tags-todo "-SOMEDAY-CANCELLED/!"
                            ((org-agenda-overriding-header "Stuck Projects")
                             (org-agenda-skip-function 'bh/skip-non-stuck-projects)
+                            (org-tags-match-list-sublevels 'indented)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
                 (tags-todo "-HOLD-CANCELLED/!"
