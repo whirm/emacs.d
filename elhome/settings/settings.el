@@ -123,7 +123,7 @@
  '(predictive-auto-learn t t)
  '(predictive-mode t)
  '(projectile-cache-file "~/.emacs.d/var/projectile.cache")
- '(projectile-completion-system (quote default))
+ '(projectile-completion-system (quote helm))
  '(projectile-global-mode t)
  '(projectile-globally-ignored-directories
    (quote
