@@ -659,7 +659,6 @@ command buffer, in which case returns the buffer directly."
          org-magit
          page-break-lines
          popup
-         python-magic
          smooth-scrolling
          swank-js
          tidy
