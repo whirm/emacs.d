@@ -3,6 +3,7 @@
       (append
        el-get-sources
        '(
+         (:name async)
          (:name ucs-utils
                 :type elpa)
          (:name list-utils
