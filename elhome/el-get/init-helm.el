@@ -1,4 +1,5 @@
 (require 'helm-config)
+(require 'helm-font)
 ;; TODO: check why this makes helm not find any results when grepping
 ;; (setq
 ;;  helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
