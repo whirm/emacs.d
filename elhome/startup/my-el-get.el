@@ -129,6 +129,7 @@
                            (interactive)
                            "Create a new branch from devel, set upstream and push"
                            (let ((new_branch_name (read-from-minibuffer "New feature branch name: ")))
+                             (magit-fetch-all)
                              (magit-branch-and-checkout new_branch_name "upstream/devel")
                              (magit-push-elsewhere new_branch_name "whirm" new_branch_name "-u")
                              ))
@@ -137,6 +138,7 @@
                            (interactive)
                            "Create a new branch from next, set upstream and push"
                            (let ((new_branch_name (read-from-minibuffer "New feature branch name: ")))
+                             (magit-fetch-all)
                              (magit-branch-and-checkout new_branch_name "upstream/next")
                              (magit-push-elsewhere new_branch_name "whirm" new_branch_name "-u")
                              ))
