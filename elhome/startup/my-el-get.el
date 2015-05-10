@@ -274,6 +274,10 @@
                                                      (highlight-parentheses-mode t)
                                                      ))
                          ))
+         (:name ansible
+                ;; needs to go before yasnippet
+                :after (progn
+                         (require 'ansible)))
          (:name yasnippet
                 :after (progn
                          (require 'yasnippet)
@@ -628,6 +632,7 @@ command buffer, in which case returns the buffer directly."
        '(
          ;; rudel  http://www.emacswiki.org/emacs/Rudel (gobby compatible collaborative text editor)
          android-mode
+         ansible-doc
          auto-install
          autopair
          autopep8
