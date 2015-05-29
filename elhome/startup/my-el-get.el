@@ -48,8 +48,7 @@
                          (global-set-key (kbd "C->") 'goto-last-change)
                          ))
          (:name helm
-                :checkout "v1.6.6"
-                ;;:checkout "b7ccbb082ea68bd4a8f505d7a20ef4a8af939be0" ;; works fine
+                ;;:checkout "v1.6.6"
                 )
          ;; wgrep-helm won't work if this is not manually loaded first?
          (:name wgrep
