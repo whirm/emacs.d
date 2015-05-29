@@ -517,8 +517,7 @@
                          )
                 )
          (:name perspective
-                :checkout "b37f9e54f8cace9949565cb0180e06d4625152ec"
-                ;; :checkout "6c8cd35759039626815a0c9f85337eed75e5af4a"
+                ;; :checkout "b37f9e54f8cace9949565cb0180e06d4625152ec"
                 :after (progn
                          (require 'perspective)
                          (persp-mode t)
@@ -556,8 +555,7 @@
                          (define-key persp-mode-map (kbd "C-x p f") 'custom-persp/feeds)
                          ))
          (:name projectile
-                ;; :checkout "b41017f795b7b13c2faaa5573574947873be0253"
-                :checkout "74afdbbdbb5ee472571d3741fe64d3832881e5ef"
+                ;; :checkout "74afdbbdbb5ee472571d3741fe64d3832881e5ef"
                 :after (progn
                          (projectile-global-mode t)
                          ))
