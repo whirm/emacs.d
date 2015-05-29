@@ -263,7 +263,7 @@
                ((org-agenda-overriding-header "Habits")
                 (org-agenda-sorting-strategy
                  '(todo-state-down effort-up category-keep))))
-              (" " "Agenda"
+              ("x" "Agenda"
                ((agenda "" nil)
                 (tags "REFILE"
                       ((org-agenda-overriding-header "Tasks to Refile")
@@ -328,6 +328,60 @@
                        (org-agenda-skip-function 'bh/skip-non-archivable-tasks)
                        (org-tags-match-list-sublevels nil))))
                nil)
+              ("i" "Incoming"
+               (
+                (tags "REFILE"
+                      ((org-agenda-overriding-header "Tasks to Refile")
+                       (org-tags-match-list-sublevels nil)))
+                (tags-todo "-SOMEDAY-NOTES-@office-@home-@errands-@anywhere-@computer"
+                           ((org-agenda-overriding-header "Tasks with no context")
+                            (org-tags-match-list-sublevels t)))
+               )
+               nil)
+              ("r" "Review"
+               ((tags-todo "-SOMEDAY-CANCELLED/!"
+                           ((org-agenda-overriding-header "Stuck Projects: Remove finished, set next action or mark as someday/maybe")
+                            (org-agenda-skip-function 'bh/skip-non-stuck-projects)
+                            (org-tags-match-list-sublevels 'indented)
+                            (org-agenda-sorting-strategy
+                             '(category-keep))))
+                (tags-todo "-CANCELLED/!NEXT"
+                           ((org-agenda-overriding-header (concat "Review next actions list:\n - Is it short? (less than 15 minutes)\n - Is it actionable?\n - Is it clear?\n - Am I committed to do it?\n - Does it depend on something else?\n - Is it clear when it's done?"
+                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
+                                                                      ""
+                                                                    " (including WAITING and SCHEDULED tasks)")))
+                            (org-agenda-skip-function 'bh/skip-projects-and-habits-and-single-tasks)
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-sorting-strategy
+                             '(todo-state-down effort-up category-keep))))
+                (tags-todo "-SOMEDAY-REFILE-CANCELLED-WAITING-HOLD/!"
+                           ((org-agenda-overriding-header (concat "Standalone Tasks"
+                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
+                                                                      ""
+                                                                    " (including WAITING and SCHEDULED tasks)")))
+                            (org-agenda-skip-function 'bh/skip-project-tasks)
+                            (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-sorting-strategy
+                             '(category-keep))))
+                (tags-todo "-CANCELLED+WAITING|HOLD/!"
+                           ((org-agenda-overriding-header (concat "Waiting and Postponed Tasks: Should we act on them?"
+                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
+                                                                      ""
+                                                                    " (including WAITING and SCHEDULED tasks)")))
+                            (org-agenda-skip-function 'bh/skip-non-tasks)
+                            (org-tags-match-list-sublevels nil)
+                            (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)))
+                (tags "-REFILE/"
+                      ((org-agenda-overriding-header "Tasks to Archive")
+                       (org-agenda-skip-function 'bh/skip-non-archivable-tasks)
+                       (org-tags-match-list-sublevels nil))))
+               nil)
               ("n" "Next tasks"
                ((agenda "" nil)
                 (tags-todo "-CANCELLED/!NEXT"
@@ -364,15 +418,30 @@
                             (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)))
                 )
                nil)
-              ("i" "Incoming"
-               (
-                (tags "REFILE"
-                      ((org-agenda-overriding-header "Tasks to Refile")
-                       (org-tags-match-list-sublevels nil)))
-                (tags-todo "-SOMEDAY-NOTES-@office-@home-@errands"
-                           ((org-agenda-overriding-header "Tasks with no context")
-                            (org-tags-match-list-sublevels t)))
-               )
+              (" " "Today"
+               ((agenda "" nil)
+                (tags-todo "PRIORITY=\"A\"|PRIORITY=\"B\"|PRIORITY=\"C\"/NEXT"
+                           ((org-agenda-overriding-header (concat "Today's Tasks: REMEMBER: Productivity first, org after, pleasure last"
+                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
+                                                                      ""
+                                                                    " (including WAITING and SCHEDULED tasks)")))
+                            (org-agenda-skip-function 'bh/skip-non-tasks)
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-sorting-strategy
+                             '(priority-down effort-up))))
+                (tags-todo "-CANCELLED+WAITING|HOLD/!"
+                           ((org-agenda-overriding-header (concat "Waiting and Postponed Tasks"
+                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
+                                                                      ""
+                                                                    " (including WAITING and SCHEDULED tasks)")))
+                            (org-agenda-skip-function 'bh/skip-non-tasks)
+                            (org-tags-match-list-sublevels nil)
+                            (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)))
+                )
                nil)
               )))
 
@@ -564,6 +633,8 @@ A prefix arg forces clock in of the default task."
                             ("@errand"   . ?e)
                             ("@office"   . ?o)
                             ("@home"     . ?h)
+                            ("@computer" . ?c)
+                            ("@anywhere" . ?a)
                             (:endgroup)
                             (:startgroup)
                             ("CANCELLED" . ?C)
@@ -573,8 +644,6 @@ A prefix arg forces clock in of the default task."
                             (:endgroup)
                             ("PERSONAL"  . ?p)
                             ("WORK"      . ?w)
-                            ("COMPUTER"  . ?c)
-                            ("crypt"     . ?e)
                             ("NOTE"      . ?n)
                             ("FLAGGED"   . ?:))))
 
