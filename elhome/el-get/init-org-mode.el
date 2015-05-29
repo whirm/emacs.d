@@ -10,17 +10,15 @@
 (defun wh-toggle-agenda ()
   "show the agenda on its own workspace"
   (interactive)
-  (if (string= (persp-name persp-curr) "org")
+  (if (string-match "*Org Agenda" (buffer-name))
       (custom-persp-last)
     (progn
       (persp-switch "org")
-      (if (not (string-match "*Org Agenda" (buffer-name)))
-          ;; Work around the fact that mu4e will fail to start if on a RO buffer
           (progn
             (switch-to-buffer "*scratch*")
             (delete-other-windows)
             (org-agenda)
-            )))))
+            ))))
 
 (global-set-key [(f12)] 'wh-toggle-agenda)
 
