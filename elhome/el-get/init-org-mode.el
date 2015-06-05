@@ -328,6 +328,19 @@
                        (org-agenda-skip-function 'bh/skip-non-archivable-tasks)
                        (org-tags-match-list-sublevels nil))))
                nil)
+              ("A" "Achivable"
+               (
+                (tags "-REFILE/"
+                      ((org-agenda-overriding-header "Tasks to Archive")
+                       (org-agenda-skip-function 'bh/skip-non-archivable-tasks)
+                       (org-tags-match-list-sublevels nil)))
+                (todo "DONE|CANCELLED"
+                      ((org-agenda-overriding-header "Done taks")
+                       (org-tags-match-list-sublevels 'indented)
+                       (org-agenda-sorting-strategy
+                        '(timestamp-down))))
+                )
+               nil)
               ("i" "Incoming"
                (
                 (tags "REFILE"
