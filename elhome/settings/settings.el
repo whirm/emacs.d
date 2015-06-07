@@ -115,6 +115,8 @@
     (header-title header-blank header-file-name header-description header-author header-maintainer header-copyright header-creation-date header-commentary header-blank header-blank header-blank header-end-line header-history header-blank header-blank header-end-line header-free-software header-code header-eof)))
  '(minimap-width-fraction 0.1)
  '(org-clock-persist-file "~/.emacs.d/var/org-clock-save.el")
+ '(org-clock-string-limit 25)
+ '(org-habit-graph-column 80)
  '(org-id-locations-file "~/.emacs.d/var/.org-id-locations")
  '(org-pomodoro-format ">%s<")
  '(org-pomodoro-play-sounds nil)
