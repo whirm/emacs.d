@@ -265,7 +265,8 @@
                          (local-set-key "\C-cp." 'nosetests-pdb-one)
                          ))
          (:name whole-line-or-region
-                ;; TODO: configure or remove this
+                :after (progn
+                         (whole-line-or-region-mode))
                 )
          (:name column-marker
                 :after (progn

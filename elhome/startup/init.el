@@ -236,12 +236,11 @@
 ;; Duplicate current line with C-D
 (defun duplicate-line()
   (interactive)
-  (move-beginning-of-line 1)
-  (kill-line)
-  (yank)
-  (open-line 1)
-  (forward-line 1)
-  (yank)
+  (save-excursion
+    (whole-line-or-region-call-with-region 'copy-region-as-kill 1 t)
+    (forward-line 1)
+    (yank))
+  (next-line)
   )
 (global-set-key (kbd "C-d") 'duplicate-line)
 
