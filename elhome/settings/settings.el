@@ -136,6 +136,7 @@
  '(py-autopair-mode t)
  '(py-set-fill-column-p t)
  '(pylint-options "--output-format=parseable --max-line-length=120")
+ '(python-fill-docstring-style (quote django))
  '(recentf-exclude (quote (".*/.mail/.*")))
  '(recentf-max-saved-items 50)
  '(recentf-mode t)
