@@ -179,6 +179,7 @@
  '(yas-prompt-functions
    (quote
     (yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt)))
+ '(yas-use-menu nil)
  '(yascroll:delay-to-hide 1.0))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

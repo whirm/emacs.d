@@ -140,6 +140,10 @@
 ;; Clean trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Make executable if script
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
+
 ;; don't accelerate scrolling
 (setq mouse-wheel-progressive-speed nil)
 
