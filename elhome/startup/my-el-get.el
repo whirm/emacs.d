@@ -26,6 +26,9 @@
                 )
          (:name rich-minority)
          (:name emacs-async)
+         (:name bind-key
+                :after (progn
+                         (require 'bind-key)))
          (:name rw-ispell
                 :type elpa)
          (:name rw-language-and-country-codes
@@ -44,8 +47,8 @@
                 )
          (:name goto-last-change
                 :after (progn
-                         (global-set-key (kbd "C-<") 'goto-last-change-reverse)
-                         (global-set-key (kbd "C->") 'goto-last-change)
+                         (bind-key "C-<" 'goto-last-change-reverse)
+                         (bind-key "C->" 'goto-last-change)
                          ))
          (:name helm
                 ;;:checkout "v1.6.6"
@@ -65,16 +68,20 @@
                          (add-hook 'emacs-startup-hook (lambda ()
                                                          (undo-tree-mode t)
                                                          ))))
+         (:name visual-regexp
+                :after (progn
+                         (bind-key "C-c r" 'vr/replace global-map)
+                         (bind-key "C-c q" 'vr/query-replace global-map)
+                         ;; if you use multiple-cursors, this is for you:
+                         (bind-key "C-c m" 'vr/mc-mark global-map)
+                         ;; to use visual-regexp-steroids's isearch instead of the built-in regexp isearch, also include the following lines:
+                         (bind-key "C-r" 'vr/isearch-backward esc-map) ;; C-M-r
+                         (bind-key "C-s" 'vr/isearch-forward esc-map) ;; C-M-s
+                         ))
          (:name visual-regexp-steroids
                 :after (progn
                          (require 'visual-regexp-steroids)
-                         (define-key global-map (kbd "C-c r") 'vr/replace)
-                         (define-key global-map (kbd "C-c q") 'vr/query-replace)
-                         ;; if you use multiple-cursors, this is for you:
-                         (define-key global-map (kbd "C-c m") 'vr/mc-mark)
-                         ;; to use visual-regexp-steroids's isearch instead of the built-in regexp isearch, also include the following lines:
-                         (define-key esc-map (kbd "C-r") 'vr/isearch-backward) ;; C-M-r
-                         (define-key esc-map (kbd "C-s") 'vr/isearch-forward) ;; C-M-s
+                         ))
                          ))
          (:name bbdb)
          (:name org-mode
@@ -239,8 +246,7 @@
                          ))
          (:name expand-region
                 :after (progn
-                         (require 'expand-region)
-                         (global-set-key (kbd "C-z") 'er/expand-region)))
+                         (bind-key "C-z" 'er/expand-region)))
          (:name tramp
                 :type builtin
                 :after (progn
