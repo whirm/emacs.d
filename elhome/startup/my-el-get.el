@@ -97,12 +97,15 @@
          (:name mu4e)
          (:name magit
                 :checkout "next"
-                :build ()               ; Kill "make docs" as the new magit makefile doesn't have this target
-                :info ()                ; idem
+                :info "Documentation"
+                :compile "lisp/*.el"
+                :depends (cl-lib dash)
+                :load-path ("lisp")
                 :after (progn
-                         (global-set-key (kbd "C-x C-z") 'magit-status)
+                         (autoload 'magit-define-popup-action "magit")
 
-                         ;;;;;;;
+                         (bind-key "C-x C-z" 'magit-status)
+
                          ;; Toggle show whitespace-only changes with "W"
                          (defun magit-toggle-whitespace ()
                            (interactive)
@@ -121,10 +124,9 @@
                            (setq magit-diff-options (remove "-w" magit-diff-options))
                            (message "Not ignoring whitespace changes")
                            (magit-refresh))
-                         ;; EO Toggle whitespace
-                         ;;;;;;;
+                         ;;^
 
-                         (defun wh-new-feature-branch ()
+                         (defun magit-wh-new-feature-branch ()
                            (interactive)
                            "Create a new branch from devel, set upstream and push"
                            (let ((new_branch_name (read-from-minibuffer "New feature branch name: ")))
@@ -133,7 +135,7 @@
                              (magit-push-elsewhere new_branch_name "whirm" new_branch_name "-u")
                              ))
 
-                         (defun wh-new-bugfix-branch ()
+                         (defun magit-wh-new-bugfix-branch ()
                            (interactive)
                            "Create a new branch from next, set upstream and push"
                            (let ((new_branch_name (read-from-minibuffer "New feature branch name: ")))
@@ -141,6 +143,24 @@
                              (magit-branch-and-checkout new_branch_name "upstream/next")
                              (magit-push-elsewhere new_branch_name "whirm" new_branch_name "-u")
                              ))
+
+                         (defun magit-wh-rebase-feature-branch ()
+                           (interactive)
+                           "Rebase against upstream/devel"
+                           (magit-fetch-all)
+                           (magit-rebase "upstream/devel"))
+
+                         (defun magit-wh-rebase-bugfix-branch ()
+                           (interactive)
+                           "Rebase against upstream/next"
+                           (magit-fetch-all)
+                           (magit-rebase "upstream/next"))
+
+                         (magit-define-popup-action 'magit-branch-popup ?f  "Create new feature branch" 'magit-wh-new-feature-branch)
+                         (magit-define-popup-action 'magit-branch-popup ?F  "Create new bugfix branch" 'magit-wh-new-bugfix-branch)
+
+                         (magit-define-popup-action 'magit-rebase-popup ?u  "Rebase against feature branch" 'magit-wh-rebase-feature-branch)
+                         (magit-define-popup-action 'magit-rebase-popup ?U  "Rebase against bugfix branch" 'magit-wh-rebase-bugfix-branch)
                          ))
          (:name elisp-slime-nav
                 :after (progn
