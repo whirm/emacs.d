@@ -23,7 +23,9 @@
 ;; (toggle-debug-on-quit)
 ;; (toggle-debug-on-error)
 
-(server-start)
+(load "server")
+(unless (server-running-p) (server-start))
+
 
 ;; EO Pre-init
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
