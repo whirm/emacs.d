@@ -130,6 +130,9 @@
 ;; Do not use pop-up question windows and use y-n instead of yes-no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Cycle through amount of spaces (all->one->none)
+(global-set-key (kbd "S-SPC") 'cycle-spacing)
+
 ;;Not sure if I like those...
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
