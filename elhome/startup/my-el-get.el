@@ -538,8 +538,6 @@
                          (persp-mode t)
                          (require 'persp-projectile)
 
-                         (global-set-key (kbd "C-S-q") 'persp-switch-quick)
-
                          ;; loading code for our custom perspectives
                          ;; taken from Magnar Sveen
                          (defmacro custom-persp (name &rest body)
@@ -556,18 +554,25 @@
                            (persp-switch (persp-name persp-last)))
 
                          ;; Easily switch to your last perspective
-                         (define-key persp-mode-map (kbd "C-x p -") 'custom-persp-last)
+                         ;;(define-key persp-mode-map (kbd "C-x p -") 'custom-persp-last)
 
-                         ;; (defun custom-persp/emacs ()
-                         ;;   (interactive)
-                         ;;   (custom-persp "emacs"
-                         ;;                 (find-file "~/.emacs.d/init.el")))
-                         ;; (define-key persp-mode-map (kbd "C-x p e") 'custom-persp/emacs)
                          (defun custom-persp/feeds ()
                            (interactive)
                            (custom-persp "feeds"
                                          (elfeed)))
-                         (define-key persp-mode-map (kbd "C-x p f") 'custom-persp/feeds)
+                         ;;(define-key persp-mode-map (kbd "C-x p f") 'custom-persp/feeds)
+
+                         ;;(global-set-key (kbd "C-S-q") 'persp-switch-quick)
+
+                         ;;(require 'hydra)
+                         (defhydra persp-navigate (global-map "C-x")
+                           "perspective navigate"
+                           ("l" custom-persp-last "last")
+                           ("q" persp-switch-quick "quick switch")
+                           ("j" projectile-persp-switch-project "jump")
+                           ("f" custom-persp/feeds "feeds")
+                           ("n" persp-next "next")
+                           ("p" persp-prev "previous"))
                          ))
          (:name projectile
                 ;; :checkout "74afdbbdbb5ee472571d3741fe64d3832881e5ef"
