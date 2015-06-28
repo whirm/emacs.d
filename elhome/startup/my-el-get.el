@@ -17,7 +17,6 @@
 
          (:name smart-mode-line
                 :after (progn
-                         (require 'smart-mode-line)
                          (setq sml/theme 'dark)
                          ;; Separate the col-number with the number added by window-numbering
                          (setq sml/line-number-format " %2l")
@@ -55,13 +54,10 @@
                 )
          ;; wgrep-helm won't work if this is not manually loaded first?
          (:name wgrep
-                :type elpa
-                :after (progn
-                         (require 'wgrep)
-                         ))
+                :type elpa)
          (:name wgrep-helm
                 :type elpa)
-
+         (:name hydra)
          (:name undo-tree-mode
                 :type builtin
                 :after (progn
@@ -90,9 +86,8 @@
                 :checkout "release_8.1.2")
          (:name org-pomodoro
                 :after (progn
-                         (require 'org-pomodoro)
                          (add-hook 'org-clock-in-hook (lambda ()
-                                                        (if (not org-timer-current-timer)
+                                                        (if (not (bound-and-true-p org-timer-current-timer))
                                                             (org-pomodoro))))
 
                          (run-with-timer 60 (* 5 60)
@@ -182,7 +177,7 @@
                          (add-hook 'doc-mode-hook
                                    '(lambda ()
                                       (turn-on-auto-fill)
-                                      (require 'asciidoc)
+                                      ;;(require 'asciidoc)
                                       ))))
 
          (:name lisppaste)
@@ -191,7 +186,6 @@
                          (global-set-key (kbd "C-c M-t") 'anchored-transpose)
                          )
                 )
-
          (:name move-text
                 :after (progn
                          ;; Move line-region around
@@ -481,7 +475,6 @@
                          ))
          (:name evil-numbers
                 :after (progn
-                         (require 'evil-numbers)
                          (global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
                          (global-set-key  (kbd "C-c -") 'evil-numbers/dec-at-pt)
                          ))
@@ -516,9 +509,6 @@
                          (setq opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1))
                          (add-to-list 'load-path (concat opam-share "/emacs/site-lisp"))
 
-                         ;; Load merlin-mode
-                         (require 'merlin)
-
                          ;; Start merlin on ocaml files
                          (add-hook 'tuareg-mode-hook 'merlin-mode t)
                          (add-hook 'caml-mode-hook 'merlin-mode t)
@@ -530,7 +520,6 @@
                          (setq merlin-command 'opam)
 
                          ;; Take a look at https://github.com/the-lambda-church/merlin for more information
-
                          ))
          (:name rainbow-mode
                 :type elpa
@@ -538,7 +527,6 @@
                 ;; names, e.g. #0000ff is displayed in white with a blue background.
                 :after (progn
                          (add-hook 'prog-mode-hook (lambda ()
-                                                     (require 'rainbow-mode)
                                                      (rainbow-mode t)
                                                      ))
                          )
@@ -601,7 +589,6 @@
                          ))
          (:name realgud
                 :after (progn
-                         (require 'realgud)
                          (defun xars-grizzl-select-cmdbuf()
                            "Lets the user select a realgud command buffer, unless there's a single
 command buffer, in which case returns the buffer directly."
@@ -629,7 +616,6 @@ command buffer, in which case returns the buffer directly."
                          ))
          (:name window-numbering
                 :after (progn
-                         (require 'window-numbering)
                          (window-numbering-mode t)
                          ))
          (:name ace-jump-mode
