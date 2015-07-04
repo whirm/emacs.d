@@ -2,22 +2,24 @@
 
 ;; This file only initializes the basic package manager stuff and elhome, the rest is done in the elhome/startup/ files
 
-;; Elpa
 (require 'package)
 (setq package-archives '(
-                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("gnu"          . "http://elpa.gnu.org/packages/")
                          ("melpa-stable" . "http://stable.melpa.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         )
+                         ("marmalade"    . "http://marmalade-repo.org/packages/"))
+      package-user-dir              (concat user-emacs-directory "var/package/")
+      el-get-dir                    (concat user-emacs-directory "var/el-get/")
+      el-get-user-package-directory (concat user-emacs-directory "elhome/el-get/")
+      bcc-cache-directory           (concat user-emacs-directory "var/byte-cache")
+      bcc-blacklist                 '("/\\.recentf$" "/history$" "var/el-get/")
       )
 
-;; El-get
-(setq el-get-dir (concat user-emacs-directory "var/el-get/"))
-
-(add-to-list 'load-path (concat el-get-dir "el-get/"))
-
-(setq el-get-user-package-directory (concat user-emacs-directory "elhome/el-get/"))
-
+(let ((el-get-install-dir (concat el-get-dir "el-get/")))
+  (add-to-list 'load-path el-get-install-dir)
+  ;; TODO: This can be done better
+  (require 'info)
+  (add-to-list 'Info-additional-directory-list el-get-install-dir)
+  )
 
 ;;(setq el-get-master-branch nil) ;; uncomment this to not use the master branch
 (unless (require 'el-get nil 'noerror)
