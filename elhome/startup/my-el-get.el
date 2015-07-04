@@ -11,12 +11,15 @@
          (:name unicode-progress-reporter ;; Has to be loaded before smart-mode-line
                 :type elpa
                 :after (progn
+                         (autoload 'unicode-progress-reporter-type "ucs-utils")
+                         (setq unicode-progress-reporter-type "Triangles")
                          (unicode-progress-reporter-setup)
                          )
                 )
 
          (:name smart-mode-line
                 :after (progn
+                         (require 'smart-mode-line)
                          (setq sml/theme 'dark)
                          ;; Separate the col-number with the number added by window-numbering
                          (setq sml/line-number-format " %2l")
