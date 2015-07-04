@@ -502,8 +502,11 @@
                          ))
          (:name tuareg-mode
                 :after (progn
+                         (add-to-list 'auto-mode-alist '("\\.eliom\\'" . tuareg-mode))
+
                          (add-hook 'tuareg-mode-hook (lambda ()
                                                        (setq tuareg-interactive-program "utop")
+                                                       (bind-key "C-z" 'merlin-enclosing-expand tuareg-mode-map)
                                                        ))
                          ))
          (:name utop)
@@ -524,6 +527,9 @@
                          (setq merlin-command 'opam)
 
                          ;; Take a look at https://github.com/the-lambda-church/merlin for more information
+
+                         (require 'ocp-indent)
+                         (require 'ocp-index)
                          ))
          (:name rainbow-mode
                 :type elpa
