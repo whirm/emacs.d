@@ -102,7 +102,7 @@
          (:name org-sync)
          (:name mu4e)
          (:name magit
-                :checkout "next"
+                ;; :checkout "next"
                 :info "Documentation"
                 :compile "lisp/*.el"
                 :depends (cl-lib dash)
@@ -702,7 +702,6 @@ command buffer, in which case returns the buffer directly."
          fringe-helper
          fuzzy
          gist
-         git-modes
          git-timemachine
          guru-mode
          helm-c-yasnippet
