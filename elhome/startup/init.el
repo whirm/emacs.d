@@ -74,6 +74,9 @@
 
 (global-set-key (kbd "<RET>") 'newline-and-indent)
 
+;; Move files to trash when deleting
+(setq delete-by-moving-to-trash t)
+
 ;; Overwrite region when pasting/writing
 ;(delete-selection-mode +1) ;; conflicts with autoparens
 
