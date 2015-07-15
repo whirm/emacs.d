@@ -47,11 +47,8 @@
          (:name goto-last-change
                 :after (progn
                          (bind-key "C-<" 'goto-last-change-reverse)
-                         (bind-key "C->" 'goto-last-change)
-                         ))
-         (:name helm
-                ;;:checkout "v1.6.6"
-                )
+                         (bind-key "C->" 'goto-last-change)))
+         (:name helm)
          ;; wgrep-helm won't work if this is not manually loaded first?
          (:name wgrep
                 :type elpa)
