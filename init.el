@@ -28,10 +28,9 @@
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)
-    (el-get-emacswiki-refresh)
-    (el-get-elpa-build-local-recipes)
-    )
-  )
+    (el-get-emacswiki-build-local-recipes) ;; used to be el-get-emacswiki-refresh
+    (package-refresh-contents)
+    (el-get-elpa-build-local-recipes)))
 
 (add-to-list 'el-get-recipe-path (concat user-emacs-directory "elhome/recipes/"))
 

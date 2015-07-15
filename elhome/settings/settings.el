@@ -38,12 +38,6 @@
      (awk-mode . "awk")
      (other . "gnu"))))
  '(column-number-mode t)
- '(company-auto-complete (quote (quote company-explicit-action-p)))
- '(company-auto-complete-chars (quote (41)))
- '(company-dabbrev-downcase nil)
- '(company-dabbrev-ignore-case t)
- '(company-minimum-prefix-length 1)
- '(company-show-numbers t)
  '(compilation-always-kill t)
  '(compilation-scroll-output t)
  '(cua-rectangle-mark-key [C-M-return])
@@ -54,12 +48,6 @@
  '(dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$|.*\\.pyc$")
  '(ecb-options-version "2.40")
  '(ecb-source-path (quote ("~/code/")))
- '(elpy-default-minor-modes (quote (eldoc-mode yas-minor-mode subword-mode)))
- '(elpy-modules
-   (quote
-    (elpy-module-company elpy-module-pyvenv elpy-module-highlight-indentation elpy-module-yasnippet elpy-module-sane-defaults)))
- '(elpy-rpc-project-specific t)
- '(elpy-test-runner (quote elpy-test-nose-runner))
  '(eww-download-directory "~/INCOMING/")
  '(face-font-family-alternatives
    (quote
@@ -82,9 +70,6 @@
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "de_aqui_cap_avall_son_meves" "TAGS" "#*#")))
  '(history-delete-duplicates t)
  '(history-length 300)
- '(hl-paren-colors
-   (quote
-    ("orange red" "dark orange" "gold" "yellow" "khaki1")))
  '(horizontal-scroll-bar-mode nil)
  '(image-dired-db-file "~/.emacs.d/var/image-dired/image-dired_db")
  '(image-dired-dir "~/.emacs.d/var/image-dired/")
@@ -99,37 +84,15 @@
    (quote
     ("--sug-mode=ultra" "--run-together" "--run-together-limit=5" "--run-together-min=2")))
  '(list-colors-sort (quote luminance))
- '(magit-commit-extend-override-date t)
- '(magit-diff-refine-hunk (quote all))
- '(magit-expand-staged-on-commit (quote full))
- '(magit-log-auto-more t)
- '(magit-log-format-graph-function (quote magit-log-format-unicode-graph))
- '(magit-process-popup-time 10)
- '(magit-restore-window-configuration t)
- '(magit-set-upstream-on-push t)
- '(magit-show-child-count t)
- '(magit-status-buffer-switch-function (quote switch-to-buffer))
  '(magithub-use-ssl t)
  '(make-header-hook
    (quote
     (header-title header-blank header-file-name header-description header-author header-maintainer header-copyright header-creation-date header-commentary header-blank header-blank header-blank header-end-line header-history header-blank header-blank header-end-line header-free-software header-code header-eof)))
  '(minimap-width-fraction 0.1)
- '(org-clock-persist-file "~/.emacs.d/var/org-clock-save.el")
- '(org-clock-string-limit 25)
- '(org-habit-graph-column 80)
- '(org-id-locations-file "~/.emacs.d/var/.org-id-locations")
- '(org-pomodoro-format ">%s<")
- '(org-pomodoro-play-sounds nil)
  '(popwin-mode t)
  '(popwin:popup-window-height 0.4)
  '(predictive-auto-learn t t)
  '(predictive-mode t)
- '(projectile-cache-file "~/.emacs.d/var/projectile.cache")
- '(projectile-completion-system (quote helm))
- '(projectile-global-mode t)
- '(projectile-globally-ignored-directories
-   (quote
-    (".idea" ".eunit" ".git" ".hg" ".fslckout" ".bzr" "_darcs" ".tox" ".svn" "build" ".mail")))
  '(projectile-globally-ignored-files (quote ("TAGS" "*.pyc" "*.pyo" "*.elc")))
  '(projectile-known-projects-file "~/.emacs.d/var/projectile-bookmarks.eld")
  '(projectile-mode-line (quote Projectile))
@@ -156,8 +119,6 @@
  '(semanticdb-default-save-directory "~/.emacs.d/var/semanticdb")
  '(send-mail-function (quote smtpmail-send-it))
  '(show-paren-mode t)
- '(sml/hidden-modes (quote (" hl-p" " SliNav" " MRev")))
- '(sml/theme (quote dark))
  '(starttls-extra-args (quote ("--tofu")))
  '(starttls-extra-arguments (quote ("--tofu")))
  '(tidy-shell-command "tidy")
@@ -176,10 +137,6 @@
  '(wg-remap-bury-buffer nil)
  '(workgroups-everywhere t)
  '(workgroups-mode t)
- '(yas-prompt-functions
-   (quote
-    (yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt)))
- '(yas-use-menu nil)
  '(yascroll:delay-to-hide 1.0))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

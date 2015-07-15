@@ -13,19 +13,16 @@
                 :after (progn
                          (autoload 'unicode-progress-reporter-type "ucs-utils")
                          (setq unicode-progress-reporter-type "Triangles")
-                         (unicode-progress-reporter-setup)
-                         )
-                )
+                         (unicode-progress-reporter-setup)))
 
          (:name smart-mode-line
                 :after (progn
                          (require 'smart-mode-line)
-                         (setq sml/theme 'dark)
-                         ;; Separate the col-number with the number added by window-numbering
-                         (setq sml/line-number-format " %2l")
-                         (sml/setup)
-                         )
-                )
+                         (setq sml/theme 'dark
+                               sml/hidden-modes '(" hl-p" " SliNav" " MRev")
+                               ;; Separate the col-number with the number added by window-
+                               sml/line-number-format " %2l")
+                         (sml/setup)))
          (:name rich-minority)
          (:name emacs-async)
          (:name bind-key
@@ -38,13 +35,13 @@
          (:name rw-hunspell
                 :type elpa
                 :after (progn
+                         (require 'rw-hunspell)
                          (setq ispell-extra-args (quote ("--sug-mode=ultra")))
                          (setq ispell-program-name "hunspell")
                          (setq rw-hunspell-dicpath-list (quote ("/var/lib/dictionaries-common/hunspell" "/usr/share/hunspell")))
                          (setq rw-hunspell-make-dictionary-menu t)
                          (setq rw-hunspell-use-rw-ispell t)
-                         (rw-hunspell-setup)
-                         )
+                         (rw-hunspell-setup))
                 :depends (rw-ispell rw-language-and-country-codes)
                 )
          (:name goto-last-change
@@ -90,6 +87,10 @@
                 )
          (:name org-pomodoro
                 :after (progn
+                         (setq
+                          org-pomodoro-format ">%s<"
+                          org-pomodoro-play-sounds nil
+                          )
                          (add-hook 'org-clock-in-hook (lambda ()
                                                         (if (not (bound-and-true-p org-timer-current-timer))
                                                             (org-pomodoro))))
@@ -108,6 +109,19 @@
                 :depends (cl-lib dash)
                 :load-path ("lisp")
                 :after (progn
+                         (setq
+                          magit-commit-extend-override-date t
+                          magit-diff-refine-hunk (quote all)
+                          magit-expand-staged-on-commit (quote full)
+                          magit-fetch-arguments nil
+                          magit-log-auto-more t
+                          magit-log-format-graph-function (quote magit-log-format-unicode-graph)
+                          magit-process-popup-time 10
+                          magit-restore-window-configuration t
+                          magit-set-upstream-on-push t
+                          magit-show-child-count t
+                          magit-status-buffer-switch-function (quote switch-to-buffer))
+
                          (autoload 'magit-define-popup-action "magit")
 
                          (bind-key "C-x C-z" 'magit-status)
@@ -329,6 +343,7 @@
          (:name highlight-parentheses
                 :after (progn
                          (require 'highlight-parentheses)
+                         (setq hl-paren-colors '("orange red" "dark orange" "gold" "yellow" "khaki1"))
                          (add-hook 'prog-mode-hook (lambda ()
                                                      (highlight-parentheses-mode t)
                                                      ))
@@ -342,7 +357,11 @@
                          (require 'yasnippet)
                          (yas-global-mode 1)
                          (yas/load-directory "~/.emacs.d/elhome/snippets")
-                         (setq yas-snippet-dirs (delete "~/.emacs.d/snippets" yas-snippet-dirs))
+                         (setq
+                          yas-snippet-dirs (delete "~/.emacs.d/snippets" yas-snippet-dirs)
+                          yas-prompt-functions '(yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt)
+                          yas-use-menu nil
+                          )
                          (add-to-list 'yas-snippet-dirs '"~/.emacs.d/elhome/snippets")
                          (global-set-key (kbd "<C-tab>") 'helm-yas-complete)
                          ))
@@ -587,6 +606,21 @@
          (:name projectile
                 ;; :checkout "74afdbbdbb5ee472571d3741fe64d3832881e5ef"
                 :after (progn
+                         (setq
+                          projectile-cache-file "~/.emacs.d/var/projectile.cache"
+                          projectile-completion-system 'helm
+                          projectile-global-mode t
+                          projectile-known-projects-file "~/.emacs.d/var/projectile-bookmarks.eld"
+                          projectile-mode-line 'Projectile
+                          projectile-mode-line-lighter ""
+                          projectile-use-git-grep t
+                          )
+                         (eval-after-load 'projectile
+                           '(progn
+                              (dolist (item (list "build" ".mail"))
+                                (add-to-list 'projectile-globally-ignored-directories item))
+                              (dolist (item (list "*.pyc" "*.pyo" "*.elc"))
+                                (add-to-list 'projectile-globally-ignored-files item))))
                          (projectile-global-mode t)
                          ))
          (:name iedit)
@@ -645,6 +679,16 @@ command buffer, in which case returns the buffer directly."
          (:name company-mode
                 ;;:checkout "0.8.0"
                 :after (progn
+                         (setq
+                          company-auto-complete 'company-explicit-action-p
+                          company-auto-complete-chars '(41)
+                          company-bbdb-modes '(message-mode mu4e:compose)
+                          company-dabbrev-downcase nil
+                          company-dabbrev-ignore-case t
+                          company-minimum-prefix-length 1
+                          company-quickhelp-mode t
+                          company-show-numbers t
+                          )
                          (global-company-mode 1)
                          ))
          (:name elpy
@@ -652,11 +696,23 @@ command buffer, in which case returns the buffer directly."
                 :checkout "release"
                 ;;:checkout "importmagic"
                 :after (progn
+                         (setq
+                          elpy-default-minor-modes '(eldoc-mode yas-minor-mode subword-mode)
+                          elpy-rpc-project-specific t
+                          elpy-test-runner 'elpy-test-nose-runner
+                          )
+                         (eval-after-load 'elpy
+                           '(progn
+                              (dolist (item (list 'elpy-module-eldoc 'elpy-module-flymake))
+                                (delete item elpy-modules))
+                              ))
+
+
                          (require 'elpy)
                          (elpy-enable)
                          (elpy-use-ipython)
 
-                         ;;Disable hook as it has a fucked up keybind
+                         ;;Disable hook as it has a messed up keybind
                          (remove-hook 'python-mode-hook 'pylint-python-hook)
                          ;;(add-hook 'python-mode-hook 'py-autopair-mode-on)
 
@@ -672,8 +728,7 @@ command buffer, in which case returns the buffer directly."
                                              (progn
                                                (add-to-list 'after-save-hook 'projectile-compile-project)
                                                (message "Compiling after saving.")))))
-                         )
-                )
+                         ))
          (:name elfeed
                 :after (progn
                          (setq
@@ -691,6 +746,8 @@ command buffer, in which case returns the buffer directly."
        (mapcar 'el-get-source-name el-get-sources)
        '(
          ;; rudel  http://www.emacswiki.org/emacs/Rudel (gobby compatible collaborative text editor)
+         align-by-current-symbol
+         align-let
          android-mode
          ansible-doc
          auto-install
@@ -704,7 +761,6 @@ command buffer, in which case returns the buffer directly."
          ein
          ess
          ess-smart-underscore
-         filladapt
          fringe-helper
          fuzzy
          gist
@@ -732,7 +788,6 @@ command buffer, in which case returns the buffer directly."
          vkill
          volatile-highlights
          xcscope+
-         yaml-mode
          )))
 
 (el-get-cleanup my-packages)
