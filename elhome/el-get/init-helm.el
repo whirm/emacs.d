@@ -7,7 +7,6 @@
 (setq
  helm-adaptive-history-file "~/.emacs.d/var/helm-adaptive-history"
  helm-bookmark-show-location t
- helm-boring-file-regexp-list (quote ("\\.git$" "\\.hg$" "\\.svn$" "\\.CVS$" "\\._darcs$" "\\.la$" "\\.o$" "~$" "\\.pyo$" "\\.pyc$" "\\.elc$" "^#.*#$"))
  helm-buffer-max-length 40
  helm-candidate-separator "┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅"
  helm-ff-skip-boring-files t
@@ -21,6 +20,9 @@
  helm-split-window-default-side (quote same)
  helm-yas-display-key-on-candidate t
  )
+
+(add-to-list 'helm-boring-file-regexp-list "TAGS")
+
 
 (helm-mode 1)
 (helm-adaptative-mode 1)
