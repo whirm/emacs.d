@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: *argv, **kwargs
+# key: akw
+# binding: direct-keybinding
+# --
+*argv, **kwargs
