@@ -57,6 +57,15 @@
                 :type elpa)
          (:name wgrep-helm
                 :type elpa)
+         (:name helm-dash
+                :after (progn
+                         (setq helm-dash-docsets-path (concat user-emacs-directory "var/dash")
+                               helm-dash-browser-func 'eww)
+                         (add-hook 'python-mode-hook '(lambda ()
+                                                        (setq-local helm-dash-docsets '("Python 2" "Twisted"))))
+                         (add-hook 'tuareg-mode-hook '(lambda ()
+                                                        (setq-local helm-dash-docsets '("OCaml"))))
+                         ))
          (:name hydra)
          (:name undo-tree-mode
                 :type builtin
