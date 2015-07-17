@@ -365,6 +365,12 @@
                           yas-use-menu nil)
                          (add-to-list 'yas-snippet-dirs '"~/.emacs.d/elhome/snippets")
                          (global-set-key (kbd "<C-tab>") 'helm-yas-complete)
+                         (unbind-key "<tab>" yas-minor-mode-map)
+                         ;; Strangely, just redefining one of the variations below won't work.
+                         ;; All rebinds seem to be needed.
+                         (define-key yas-minor-mode-map [(tab)]        nil)
+                         (define-key yas-minor-mode-map (kbd "TAB")    nil)
+                         (define-key yas-minor-mode-map (kbd "<tab>")  nil)
                          ))
          (:name popwin
                 :after (progn
