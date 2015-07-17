@@ -376,8 +376,8 @@
                          (require 'header2)
                          (add-hook 'write-file-hooks 'auto-update-file-header)
                          (add-hook 'prog-mode-hook 'auto-make-header t)
-         (:name cask)
                          ))
+         ;; (:name cask)
          (:name flycheck
                 :after (progn
                          (global-flycheck-mode 1)
