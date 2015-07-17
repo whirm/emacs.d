@@ -564,51 +564,10 @@
                          (add-hook 'prog-mode-hook (lambda ()
                                                      (rainbow-mode t)
                                                      ))
-                         )
-                )
+                         ))
          (:name perspective
                 ;; :checkout "b37f9e54f8cace9949565cb0180e06d4625152ec"
-                :after (progn
-                         (require 'perspective)
-                         (persp-mode t)
-                         (require 'persp-projectile)
-
-                         ;; loading code for our custom perspectives
-                         ;; taken from Magnar Sveen
-                         (defmacro custom-persp (name &rest body)
-                           `(let ((initialize (not (gethash ,name perspectives-hash)))
-                                  (current-perspective persp-curr))
-                              (persp-switch ,name)
-                              (when initialize ,@body)
-                              (setq persp-last current-perspective)))
-
-                         ;; Jump to last perspective
-                         ;; taken from Magnar Sveen
-                         (defun custom-persp-last ()
-                           (interactive)
-                           (persp-switch (persp-name persp-last)))
-
-                         ;; Easily switch to your last perspective
-                         ;;(define-key persp-mode-map (kbd "C-x p -") 'custom-persp-last)
-
-                         (defun custom-persp/feeds ()
-                           (interactive)
-                           (custom-persp "feeds"
-                                         (elfeed)))
-                         ;;(define-key persp-mode-map (kbd "C-x p f") 'custom-persp/feeds)
-
-                         ;;(global-set-key (kbd "C-S-q") 'persp-switch-quick)
-
-                         ;;(require 'hydra)
-                         (defhydra persp-navigate (global-map "C-x")
-                           "perspective navigate"
-                           ("l" custom-persp-last "last")
-                           ("q" persp-switch-quick "quick switch")
-                           ("j" projectile-persp-switch-project "jump")
-                           ("f" custom-persp/feeds "feeds")
-                           ("n" persp-next "next")
-                           ("p" persp-prev "previous"))
-                         ))
+                )
          (:name projectile
                 ;; :checkout "74afdbbdbb5ee472571d3741fe64d3832881e5ef"
                 :after (progn
