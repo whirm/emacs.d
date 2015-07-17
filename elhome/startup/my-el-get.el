@@ -14,7 +14,6 @@
                          (autoload 'unicode-progress-reporter-type "ucs-utils")
                          (setq unicode-progress-reporter-type "Triangles")
                          (unicode-progress-reporter-setup)))
-
          (:name smart-mode-line
                 :after (progn
                          (require 'smart-mode-line)
@@ -208,8 +207,7 @@
          (:name anchored-transpose
                 :after (progn
                          (global-set-key (kbd "C-c M-t") 'anchored-transpose)
-                         )
-                )
+                         ))
          (:name move-text
                 :after (progn
                          ;; Move line-region around
@@ -319,8 +317,7 @@
                          (add-hook 'python-mode-hook
                                    (lambda () (interactive)
                                      (column-marker-1 fill-column)))
-                         )
-                )
+                         ))
          ;; (:name twittering-mode
          ;;        :after (progn
          ;;                  (add-hook 'twittering-mode-hook
@@ -337,8 +334,7 @@
          (:name fic-mode
                 :after (progn
                          (add-hook 'prog-mode-hook 'fic-mode t)
-                         )
-                )
+                         ))
          ;;(:name emacs-goodies-el :type apt-get)
          (:name autopair
                 :after (progn
@@ -366,8 +362,7 @@
                          (setq
                           yas-snippet-dirs (delete "~/.emacs.d/snippets" yas-snippet-dirs)
                           yas-prompt-functions '(yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt)
-                          yas-use-menu nil
-                          )
+                          yas-use-menu nil)
                          (add-to-list 'yas-snippet-dirs '"~/.emacs.d/elhome/snippets")
                          (global-set-key (kbd "<C-tab>") 'helm-yas-complete)
                          ))
@@ -375,31 +370,26 @@
                 :after (progn
                          (require 'popwin)
                          (popwin-mode 1)
-                         )
-                )
+                         ))
          (:name header2
                 :after (progn
                          (require 'header2)
                          (add-hook 'write-file-hooks 'auto-update-file-header)
                          (add-hook 'prog-mode-hook 'auto-make-header t)
-                         )
-                )
          (:name cask)
+                         ))
          (:name flycheck
                 :after (progn
                          (global-flycheck-mode 1)
-                         )
-                )
+                         ))
          (:name lua-block
                 :after (progn
                          ;;(require 'lua-block) ;; It always gets enabled on all buffers?
-                         )
-                )
+                         ))
          (:name yascroll
                 :after (progn
                          (global-yascroll-bar-mode 1)
-                         )
-                )
+                         ))
          (:name dired+
                 :after (progn
                          (toggle-diredp-find-file-reuse-dir 1)
@@ -424,9 +414,7 @@
                          (define-key dired-mode-map
                            (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
                          ;;^
-
-                         )
-                )
+                         ))
          (:name markdown-mode
                 :after (progn
                          (require 'markdown-mode)))
