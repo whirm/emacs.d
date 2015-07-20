@@ -35,14 +35,13 @@
                 :type elpa
                 :after (progn
                          (require 'rw-hunspell)
-                         (setq ispell-extra-args (quote ("--sug-mode=ultra")))
-                         (setq ispell-program-name "hunspell")
-                         (setq rw-hunspell-dicpath-list (quote ("/var/lib/dictionaries-common/hunspell" "/usr/share/hunspell")))
-                         (setq rw-hunspell-make-dictionary-menu t)
-                         (setq rw-hunspell-use-rw-ispell t)
+                         (setq ispell-extra-args '("--sug-mode=ultra")
+                               ispell-program-name "hunspell"
+                               rw-hunspell-dicpath-list '("/var/lib/dictionaries-common/hunspell" "/usr/share/hunspell")
+                               rw-hunspell-make-dictionary-menu t
+                               rw-hunspell-use-rw-ispell t)
                          (rw-hunspell-setup))
-                :depends (rw-ispell rw-language-and-country-codes)
-                )
+                :depends (rw-ispell rw-language-and-country-codes))
          (:name goto-last-change
                 :after (progn
                          (bind-key "C-<" 'goto-last-change-reverse)
@@ -92,10 +91,8 @@
                 )
          (:name org-pomodoro
                 :after (progn
-                         (setq
-                          org-pomodoro-format ">%s<"
-                          org-pomodoro-play-sounds nil
-                          )
+                         (setq org-pomodoro-format ">%s<"
+                               org-pomodoro-play-sounds nil)
                          (add-hook 'org-clock-in-hook (lambda ()
                                                         (if (not (bound-and-true-p org-timer-current-timer))
                                                             (org-pomodoro))))
@@ -142,10 +139,8 @@
                                (progn
                                  (if (> (point) (mark))
                                      (exchange-point-and-mark))
-                                 (let (
-                                       (column (current-column))
-                                       (text (delete-and-extract-region (point) (mark)))
-                                       )
+                                 (let ((column (current-column))
+                                       (text (delete-and-extract-region (point) (mark))))
                                    (right-char arg)
                                    (set-mark (point))
                                    (insert text)
@@ -285,10 +280,9 @@
                          (require 'yasnippet)
                          (yas-global-mode 1)
                          (yas/load-directory "~/.emacs.d/elhome/snippets")
-                         (setq
-                          yas-snippet-dirs (delete "~/.emacs.d/snippets" yas-snippet-dirs)
-                          yas-prompt-functions '(yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt)
-                          yas-use-menu nil)
+                         (setq yas-snippet-dirs (delete "~/.emacs.d/snippets" yas-snippet-dirs)
+                               yas-prompt-functions '(yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt)
+                               yas-use-menu nil)
                          (add-to-list 'yas-snippet-dirs '"~/.emacs.d/elhome/snippets")
                          (global-set-key (kbd "<C-tab>") 'helm-yas-complete)
                          (unbind-key "<tab>" yas-minor-mode-map)
@@ -430,9 +424,9 @@
          (:name flyguess
                 :type emacswiki
                 :after (progn
-                         (setq flyguess-check-percentage 50)
-                         (setq flyguess-mininum-buffer-size 200)
-                         (setq flyguess-dictionary-list (quote ("ca_ES_hunspell" "en_US_hunspell" "es_ES_hunspell")))
+                         (setq flyguess-check-percentage 50
+                               flyguess-mininum-buffer-size 200
+                               flyguess-dictionary-list '("ca_ES_hunspell" "en_US_hunspell" "es_ES_hunspell"))
 
                          ;; Activate Flyguess when composing a mail
                          ;;(add-hook 'mu4e-compose-mode-hook 'flyguess-guess)
@@ -491,15 +485,13 @@
          (:name projectile
                 ;; :checkout "74afdbbdbb5ee472571d3741fe64d3832881e5ef"
                 :after (progn
-                         (setq
-                          projectile-cache-file "~/.emacs.d/var/projectile.cache"
-                          projectile-completion-system 'helm
-                          projectile-global-mode t
-                          projectile-known-projects-file "~/.emacs.d/var/projectile-bookmarks.eld"
-                          projectile-mode-line 'Projectile
-                          projectile-mode-line-lighter ""
-                          projectile-use-git-grep t
-                          )
+                         (setq projectile-cache-file "~/.emacs.d/var/projectile.cache"
+                               projectile-completion-system 'helm
+                               projectile-global-mode t
+                               projectile-known-projects-file "~/.emacs.d/var/projectile-bookmarks.eld"
+                               projectile-mode-line 'Projectile
+                               projectile-mode-line-lighter ""
+                               projectile-use-git-grep t)
                          (eval-after-load 'projectile
                            '(progn
                               (dolist (item (list "build" ".mail"))
@@ -564,16 +556,14 @@ command buffer, in which case returns the buffer directly."
          (:name company-mode
                 ;;:checkout "0.8.0"
                 :after (progn
-                         (setq
-                          company-auto-complete 'company-explicit-action-p
-                          company-auto-complete-chars '(41)
-                          company-bbdb-modes '(message-mode mu4e:compose)
-                          company-dabbrev-downcase nil
-                          company-dabbrev-ignore-case t
-                          company-minimum-prefix-length 1
-                          company-quickhelp-mode t
-                          company-show-numbers t
-                          )
+                         (setq company-auto-complete 'company-explicit-action-p
+                               company-auto-complete-chars '(41)
+                               company-bbdb-modes '(message-mode mu4e:compose)
+                               company-dabbrev-downcase nil
+                               company-dabbrev-ignore-case t
+                               company-minimum-prefix-length 1
+                               company-quickhelp-mode t
+                               company-show-numbers t)
                          (global-company-mode 1)
                          ))
          (:name elpy
@@ -581,11 +571,9 @@ command buffer, in which case returns the buffer directly."
                 :checkout "release"
                 ;;:checkout "importmagic"
                 :after (progn
-                         (setq
-                          elpy-default-minor-modes '(eldoc-mode yas-minor-mode subword-mode)
-                          elpy-rpc-project-specific t
-                          elpy-test-runner 'elpy-test-nose-runner
-                          )
+                         (setq elpy-default-minor-modes '(eldoc-mode yas-minor-mode subword-mode)
+                               elpy-rpc-project-specific t
+                               elpy-test-runner 'elpy-test-nose-runner)
                          (eval-after-load 'elpy
                            '(progn
                               (dolist (item (list 'elpy-module-eldoc 'elpy-module-flymake))
@@ -616,9 +604,8 @@ command buffer, in which case returns the buffer directly."
                          ))
          (:name elfeed
                 :after (progn
-                         (setq
-                          elfeed-db-directory (concat user-emacs-directory "/var/elfeed/")
-                          elfeed-sort-order (quote ascending)
+                         (setq elfeed-db-directory (concat user-emacs-directory "/var/elfeed/")
+                               elfeed-sort-order 'ascending
                           )))
          (:name align
                 :after (progn
