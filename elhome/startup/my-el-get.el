@@ -82,8 +82,18 @@
                 :after (progn
                          (require 'visual-regexp-steroids)
                          ))
+         (:name bbdb
+                :after (progn
+                         (require 'bbdb-anniv)
+                         (autoload 'bbdb-insinuate-mu4e "bbdb-mu4e")
+                         (bbdb-initialize 'message 'mu4e 'pgp)
+                         ;;(bbdb-mua-auto-update-init 'message 'mu4e 'pgp)
+                         (setq bbdb-mail-user-agent '(message-user-agent)
+                               bbdb-mua-pop-up t
+                               bbdb-mua-pop-up-window-size 5)
+                         (add-hook 'mu4e-view-mode-hook 'bbdb-mua-auto-update)
+                         (bind-key "R" 'bbdb-merge-records bbdb-mode-map)
                          ))
-         (:name bbdb)
          (:name org-mode
                 ;; :checkout "release_8.2.10"
                 ;; :checkout "release_8.3beta" ;broken

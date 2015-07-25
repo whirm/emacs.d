@@ -43,6 +43,7 @@
  ;; smtpmail-debug-info t ; only to debug problems
  ;; smtpmail-debug-verb t
  message-send-mail-partially-limit nil
+ mu4e-compose-complete-addresses nil
  )
 
 (add-hook 'message-mode-hook 'orgtbl-mode 'append)
