@@ -78,7 +78,7 @@
 (setq delete-by-moving-to-trash t)
 
 ;; Overwrite region when pasting/writing
-;(delete-selection-mode +1) ;; conflicts with autoparens
+;;(delete-selection-mode +1) ;; conflicts with autoparens
 
 ;; Use only spaces for indenting
 (setq-default indent-tabs-mode nil)
@@ -268,6 +268,8 @@
 
 (global-set-key (kbd "C-S-<delete>") 'kill-word-at-point)
 
+;;^
+
 ;; Delete current buffer's file.
 (defun delete-current-buffer-file ()
   "Removes file connected to current buffer and kills buffer."
@@ -284,7 +286,6 @@
 
 (global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
 ;;^
-
 
 ;; Rename current buffer file
 (defun rename-current-buffer-file ()
@@ -378,7 +379,7 @@
 ;; Write backup files to own directory
 (setq backup-directory-alist
       `((".*" . ,(expand-file-name
-                 (concat user-emacs-directory "var/backups")))))
+                  (concat user-emacs-directory "var/backups")))))
 (setq auto-save-file-name-transforms
       `((".*" , (concat user-emacs-directory "var/autosaves") t)))
 
@@ -394,7 +395,6 @@
 ;; Disable C-z
 (global-unset-key (kbd "C-z"))
 
-;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; change case of letters
 ;; http://ergoemacs.org/emacs/modernization_upcase-word.html
