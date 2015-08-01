@@ -560,3 +560,4 @@ point reaches the beginning or end of the buffer, stop there."
 ;; Stuff automatically added by emacs:
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
