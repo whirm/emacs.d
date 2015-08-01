@@ -217,17 +217,17 @@
 
 (add-hook 'org-clock-out-hook 'bh/remove-empty-drawer-on-clock-out 'append)
 
-; Targets include this file and any file contributing to the agenda - up to 9 levels deep
+;; Targets include this file and any file contributing to the agenda - up to 9 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 9)
                                  (org-agenda-files :maxlevel . 9))))
 
-; Use full outline paths for refile targets - we file directly with IDO
+;; Use full outline paths for refile targets - we file directly with IDO
 (setq org-refile-use-outline-path t)
 
-; Targets complete directly with IDO
+;; Targets complete directly with IDO
 (setq org-outline-path-complete-in-steps nil)
 
-; Allow refile to create parent tasks with confirmation
+;; Allow refile to create parent tasks with confirmation
 (setq org-refile-allow-creating-parent-nodes (quote confirm))
 
 ;; Use IDO for both buffer and file completion and ido-everywhere to t
@@ -350,7 +350,7 @@
                 (tags-todo "-SOMEDAY-NOTES-@office-@home-@errands-@anywhere-@computer"
                            ((org-agenda-overriding-header "Tasks with no context")
                             (org-tags-match-list-sublevels t)))
-               )
+                )
                nil)
               ("r" "Review"
                ((tags-todo "-SOMEDAY-CANCELLED/!"
@@ -623,10 +623,10 @@ A prefix arg forces clock in of the default task."
 (setq org-time-stamp-rounding-minutes (quote (1 1)))
 
 (setq org-agenda-clock-consistency-checks
-      (quote (:max-duration "4:00"
-              :min-duration 0
-              :max-gap 0
-              :gap-ok-around ("4:00"))))
+      '(:max-duration "4:00"
+        :min-duration 0
+        :max-gap 0
+        :gap-ok-around ("4:00")))
 
 ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks with 0:00 duration
 (setq org-clock-out-remove-zero-time-clocks t)
@@ -1779,23 +1779,22 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-clock-sound "/usr/local/lib/tngchime.wav")
 
 ;; Enable habit tracking (and a bunch of other modules)
-(setq org-modules (quote (org-bbdb
-                          org-bibtex
-                          org-crypt
-                          org-gnus
-                          org-id
-                          org-info
-                          org-jsinfo
-                          org-habit
-                          org-inlinetask
-                          org-irc
-                          org-mew
-                          org-mhe
-                          org-protocol
-                          org-rmail
-                          org-vm
-                          org-wl
-                          org-w3m)))
+(setq org-modules '(org-bbdb
+                    org-bibtex
+                    org-crypt
+                    org-gnus
+                    org-habit
+                    org-id
+                    org-info
+                    org-inlinetask
+                    org-irc
+                    org-mew
+                    org-mhe
+                    org-protocol
+                    org-rmail
+                    org-vm
+                    org-w3m
+                    org-wl))
 
 ;; position the habit graph on the agenda to the right of the default
 (setq org-habit-graph-column 50)
@@ -2089,10 +2088,10 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;; show appointment notifications trough DBUS notification API
 (defun wh-appt-display (min-to-app new-time msg)
   (notifications-notify
-    :title (format "Appointment in %s minutes" min-to-app)
-    :body (format "\n%s" msg)
-    :timeout 60000
-    )
+   :title (format "Appointment in %s minutes" min-to-app)
+   :body (format "\n%s" msg)
+   :timeout 60000
+   )
   )
 
 (setq appt-disp-window-function (function wh-appt-display))
