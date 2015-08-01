@@ -2074,6 +2074,57 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-odd-levels-only nil)
 
+;; Maintenance stuff
+;;
+(defun dmj:org-remove-redundant-tags ()
+  "Remove redundant tags of headlines in current buffer.
+
+A tag is considered redundant if it is local to a headline and
+inherited by a parent headline."
+  (interactive)
+  (when (eq major-mode 'org-mode)
+    (save-excursion
+      (org-map-entries
+       (lambda ()
+         (let ((alltags (split-string (or (org-entry-get (point) "ALLTAGS") "") ":"))
+               local inherited tag)
+           (dolist (tag alltags)
+             (if (get-text-property 0 'inherited tag)
+                 (push tag inherited) (push tag local)))
+           (dolist (tag local)
+             (if (member tag inherited) (org-toggle-tag tag 'off)))))
+       t nil))))
+
+(defun dmj:org-remove-empty-propert-drawers ()
+  "*Remove all empty property drawers in current file."
+  (interactive)
+  (unless (eq major-mode 'org-mode)
+    (error "You need to turn on Org mode for this function."))
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward ":PROPERTIES:" nil t)
+      (save-excursion
+        (org-remove-empty-drawer-at (match-beginning 0))))))
+
+(defun wh:org-check-misformatted-subtree ()
+  "Check misformatted entries in the current buffer."
+  (interactive)
+  (show-all)
+  (org-map-entries
+   (lambda ()
+     (when (and (move-beginning-of-line 2)
+                (not (looking-at org-heading-regexp)))
+       (if (or (and (org-get-scheduled-time (point))
+                    (not (looking-at (concat "^.*" org-scheduled-regexp))))
+               (and (org-get-deadline-time (point))
+                    (not (looking-at (concat "^.*" org-deadline-regexp)))))
+           (when (y-or-n-p "Fix this subtree? ")
+             (message "Call the function again when you're done fixing this subtree.")
+             (recursive-edit))
+         (message "All subtrees checked."))))))
+
+;; ^
+
 ;; org-mobile stuff
 ;;
 (require 'org-mobile)
