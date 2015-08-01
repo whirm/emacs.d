@@ -7,18 +7,19 @@
 ;;   (add-to-list 'load-path (expand-file-name "~/git/org-mode/lisp")))
 
 ;; Open org agenda with F12
+(defun wh:show-agenda (&optional agenda-key)
+  (interactive "P")
+  (persp-switch "org")
+  (switch-to-buffer "*scratch*")
+  (delete-other-windows)
+  (org-agenda nil agenda-key))
+
 (defun wh-toggle-agenda ()
   "show the agenda on its own workspace"
   (interactive)
   (if (string-match "*Org Agenda" (buffer-name))
       (custom-persp-last)
-    (progn
-      (persp-switch "org")
-          (progn
-            (switch-to-buffer "*scratch*")
-            (delete-other-windows)
-            (org-agenda)
-            ))))
+    (wh:show-agenda)))
 
 (global-set-key [(f12)] 'wh-toggle-agenda)
 
@@ -2100,3 +2101,29 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (run-at-time "00:59" 3600 'org-save-all-org-buffers)
 
 ;;^
+
+;; Make emacs jump to the agenda view when idling
+(defun jump-to-org-agenda ()
+  (interactive)
+  (let ((buf (get-buffer "*Org Agenda*"))
+        wind)
+    (if buf
+        (if (setq wind (get-buffer-window buf))
+            (select-window wind)
+          (if (called-interactively-p)
+              (progn
+                (select-window (display-buffer buf t t))
+                (org-fit-window-to-buffer)
+                ;; (org-agenda-redo)
+                )
+            (with-selected-window (display-buffer buf)
+              (org-fit-window-to-buffer)
+              ;; (org-agenda-redo)
+              )))
+      (call-interactively 'org-agenda-list)))
+  ;;(let ((buf (get-buffer "*Calendar*")))
+  ;;  (unless (get-buffer-window buf)
+  ;;    (org-agenda-goto-calendar)))
+  )
+
+(run-with-idle-timer 300 t (lambda () (wh:show-agenda " ")))
