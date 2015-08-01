@@ -239,8 +239,9 @@
                          ))
          (:name whole-line-or-region
                 :after (progn
-                         (whole-line-or-region-mode))
-                )
+                         (whole-line-or-region-mode)
+                         (bind-key "M-w" 'whole-line-or-region-kill-ring-save)
+                         ))
          (:name column-marker
                 :after (progn
                          ;; Highlight character at "fill-column" position.
