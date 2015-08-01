@@ -37,7 +37,7 @@
   (interactive)
   (find-file (concat (projectile-project-root) "journal.org")))
 
-;;(require 'hydra)
+(require 'hydra)
 (defhydra persp-navigate (global-map "C-x")
   "perspective navigate"
   ("e" wh-persp-edit-journal "edit journal")
