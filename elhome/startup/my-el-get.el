@@ -357,61 +357,79 @@
                          (require 'markdown-mode)))
          (:name weechat)
          ;; (:name erc
-         ;; │18:51:40        whirm | is anybody using ERC/circe with client side cert auth?
-         ;; │18:55:20  wgreenhouse | whirm: it's possible with ERC, through tweaking erc-server-connect-function
-         ;; │18:55:35  wgreenhouse | to a version that supplies a :client-certificate arg to open-network-stream
-         ;; │18:55:47  wgreenhouse | probably you could do the same hack with circe
-         ;; │18:56:42        whirm | wgreenhouse: ok, I'll try that. Thanks
-         ;; │18:56:48  wgreenhouse | whirm: I may try it soon for ERC on OFTC, I'll let you know if it worked.
-         ;; │19:02:01   fledermaus | whirm: passing a :client-certificate value of t will automatically search auth-sources for a certificate
-         ;; │                      | and key, so you could put those in your ~/.netrc and it would magically work.
+         ;;        ;; │18:51:40        whirm | is anybody using ERC/circe with client side cert auth?
+         ;;        ;; │18:55:20  wgreenhouse | whirm: it's possible with ERC, through tweaking erc-server-connect-function
+         ;;        ;; │18:55:35  wgreenhouse | to a version that supplies a :client-certificate arg to open-network-stream
+         ;;        ;; │18:55:47  wgreenhouse | probably you could do the same hack with circe
+         ;;        ;; │18:56:42        whirm | wgreenhouse: ok, I'll try that. Thanks
+         ;;        ;; │18:56:48  wgreenhouse | whirm: I may try it soon for ERC on OFTC, I'll let you know if it worked.
+         ;;        ;; │19:02:01   fledermaus | whirm: passing a :client-certificate value of t will automatically search auth-sources for a certificate
+         ;;        ;; │                      | and key, so you could put those in your ~/.netrc and it would magically work.
          ;;        :after (progn
          ;;                 (require 'erc)
+         ;;                 (add-to-list 'tls-program "gnutls-cli --tofu --priority SECURE256 --x509cafile ~/.ssl/spi_ca.pem --x509certfile ~/.ssl/certs/whirm.pem -p %p %h")
+         ;;                 (defun wh-client-cert-open-network-stream (&rest args)
+
+         ;;                 (defun wh-client-cert-open-network-stream (&rest args)
+         ;;                   (let (
+         ;;                         (my_args (append args '(:client-certificate t) ))
+         ;;                         )
+         ;;                     (apply open-network-stream my_args))
+         ;;                   )
+
+         ;;                 ;; (setq
+         ;;                 ;;  (erc-server-connect-function wh-client)
+         ;;                 ;;  )
+         ;;                 (defun gnutls-available-p ()
+         ;;                   "Function redefined in order not to use built-in GnuTLS support"
+         ;;                   nil)
+
          ;;                 (defun irc-connect()
          ;;                   "Start ERC for all the networks I use."
          ;;                   (interactive)
          ;;                   (erc-tls :server "chat.freenode.net" :port 6697 :nick "whirm")
-         ;;                   (erc-tls :server "irc.oftc.net" :port 6697 :nick "whirm")
+         ;;                   (erc-tls :server "irc.oftc.net"      :port 6697 :nick "whirm")
          ;;                   (erc :server "localhost" :nick "whirm")
          ;;                   )
-         ;;
-         ;; TODO Check and install these extensions if I use ERC
-         ;; erc-extension
-         ;; erc-extras
-         ;; erc-highlight-nicknames
-         ;; erc-nick-notify
-         ;;
-         ;; stuff to set if I decide to use erc again
-         ;; '(erc-auto-query (quote window))
-         ;; '(erc-autoaway-mode t)
-         ;; '(erc-autojoin-channels-alist (quote (("freenode.net" "#emacs" "#tribler") ("oftc.net" "#awesome") ("localhost" "&bitlbee"))))
-         ;; '(erc-autojoin-mode t)
-         ;; '(erc-autojoin-timing (quote ident))
-         ;; '(erc-emacswiki-lisp-url "http://www.emacswiki.org/elisp/")
-         ;; '(erc-frame-dedicated-flag t)
-         ;; '(erc-log-channels-directory "~/.emacs.d/var/erc/logs/")
-         ;; '(erc-log-mode t)
-         ;; '(erc-modules (quote (autoaway autojoin button capab-identify completion dcc log move-to-prompt ring services smiley stamp track highlight-nicknames autojoin button capab-identify dcc fill irccontrols list log match menu move-to-prompt netsplit networks noncommands notify notifications readonly ring services smiley stamp spelling track truncate)))
-         ;; '(erc-netsplit-mode t)
-         ;; '(erc-nick "whirm")
-         ;; '(erc-nick-uniquifier "_")
-         ;; '(erc-nickserv-identify-mode (quote autodetect))
-         ;; '(erc-nickserv-passwords nil)
-         ;; '(erc-pcomplete-mode t)
-         ;; '(erc-prompt-for-nickserv-password nil)
-         ;; '(erc-services-mode t)
-         ;; '(erc-stamp-mode t)
-         ;; '(erc-track-exclude-server-buffer t)
-         ;; '(erc-track-minor-mode t)
-         ;; '(erc-track-mode t)
-         ;; '(erc-truncate-mode t)
+         ;;                 ;;
+         ;;                 ;; TODO Check and install these extensions if I use ERC
+         ;;                 ;; erc-extension
+         ;;                 ;; erc-extras
+         ;;                 ;; erc-highlight-nicknames
+         ;;                 ;; erc-nick-notify
+         ;;                 ;;
+         ;;                 ;; stuff to set if I decide to use erc again
 
-         ;;faces:
-         ;;  '(erc-input-face ((t (:foreground "gray52"))) t)
-         ;; '(erc-notice-face ((t (:foreground "gray28" :weight bold))) t)
-         ;; '(erc-timestamp-face ((t (:foreground "chartreuse4" :weight bold))) t)
-         ;;                 )
-         ;;        )
+         ;;                 (setq
+         ;;                  erc-auto-query '(window)
+         ;;                  erc-autoaway-mode t
+         ;;                  erc-autojoin-channels-alist '((("freenode.net" "#emacs" "#tribler") ("oftc.net" "#awesome") ("localhost" "&bitlbee")))
+         ;;                  erc-autojoin-mode t
+         ;;                  erc-autojoin-timing '(ident)
+         ;;                  erc-emacswiki-lisp-url "http://www.emacswiki.org/elisp/"
+         ;;                  erc-frame-dedicated-flag t
+         ;;                  erc-log-channels-directory "~/.emacs.d/var/erc/logs/"
+         ;;                  erc-log-mode t
+         ;;                  erc-modules '((autoaway autojoin button capab-identify completion dcc log move-to-prompt ring services smiley stamp track highlight-nicknames autojoin button capab-identify dcc fill irccontrols list log match menu move-to-prompt netsplit networks noncommands notify notifications readonly ring services smiley stamp spelling track truncate))
+         ;;                  erc-netsplit-mode t
+         ;;                  erc-nick "whirm"
+         ;;                  erc-nick-uniquifier "_"
+         ;;                  erc-nickserv-identify-mode '(autodetect)
+         ;;                  erc-nickserv-passwords nil
+         ;;                  erc-pcomplete-mode t
+         ;;                  erc-prompt-for-nickserv-password nil
+         ;;                  erc-services-mode t
+         ;;                  erc-stamp-mode t
+         ;;                  erc-track-exclude-server-buffer t
+         ;;                  erc-track-minor-mode t
+         ;;                  erc-track-mode t
+         ;;                  erc-truncate-mode t
+         ;;                  )
+         ;;                 ;;faces:
+         ;;                 ;;  '(erc-input-face ((t (:foreground "gray52"))) t)
+         ;;                 ;; '(erc-notice-face ((t (:foreground "gray28" :weight bold))) t)
+         ;;                 ;; '(erc-timestamp-face ((t (:foreground "chartreuse4" :weight bold))) t)
+         ;;                 ))
 
          (:name deferred-flyspell
                 :after (progn
