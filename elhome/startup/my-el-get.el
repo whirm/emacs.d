@@ -639,6 +639,20 @@ command buffer, in which case returns the buffer directly."
          (:name align
                 :after (progn
                          (require 'align)))
+         ;; Full recipes I have to make into PR's to upstream
+         (:name org-pretty-table
+                :depends (org-mode)
+                :type github
+                :branch "master"
+                :pkgname "Fuco1/org-pretty-table"
+                )
+         (:name org-html-themes
+                :depends (org-mode)
+                :type github
+                :branch "master"
+                :pkgname "fniessen/org-html-themes"
+                :prepare (progn
+                           (setq org-html-themes-dir default-directory)))
          )))
 
 (setq my-packages
