@@ -680,6 +680,7 @@ command buffer, in which case returns the buffer directly."
          fuzzy
          gist
          git-timemachine
+         gnuplot-mode
          guru-mode
          helm-c-yasnippet
          jam-mode
