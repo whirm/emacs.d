@@ -2086,6 +2086,27 @@ Late deadlines first, then scheduled, then non-late deadlines"
  'selective-display
  (let ((face-offset (* (face-id 'shadow) (lsh 1 22))))
    (vconcat (mapcar (lambda (c) (+ face-offset c)) " … "))))
+
+;; csv importer
+(defun yf/lisp-table-to-org-table (table &optional function)
+  "Convert a lisp table to `org-mode' syntax, applying FUNCTION to each of its elements.
+The elements should not have any more newlines in them after
+applying FUNCTION ; the default converts them to spaces. Return
+value is a string containg the unaligned `org-mode' table."
+  (unless (functionp function)
+    (setq function (lambda (x) (replace-regexp-in-string "\n" " " x))))
+  (mapconcat (lambda (x)                ; x is a line.
+               (concat "| " (mapconcat function x " | ") " |"))
+             table "\n"))
+
+(defun yf/csv-to-table (beg end)
+  "Convert a csv file to an `org-mode' table."
+  (interactive "r")
+  (require 'pcsv)
+  (insert (yf/lisp-table-to-org-table (pcsv-parse-region beg end)))
+  (delete-region beg end)
+  (org-table-align))
+;;^
 ;; Maintenance stuff
 ;;
 (defun dmj:org-remove-redundant-tags ()
