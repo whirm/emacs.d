@@ -649,6 +649,22 @@ command buffer, in which case returns the buffer directly."
          (:name align
                 :after (progn
                          (require 'align)))
+         ;; Haskell stuff
+         (:name haskell-mode
+                :after (progn
+                         (custom-set-variables '(haskell-tags-on-save t))
+                         (add-hook 'haskell-mode-hook 'haskell-indentation-mode)))
+         (:name hindent
+                :after (progn
+                         (add-hook 'haskell-mode-hook #'hindent-mode)))
+         (:name ghc-mod
+                :after (progn
+                         (add-hook 'haskell-mode-hook (lambda () (ghc-init) (hare-init)))))
+         (:name company-ghc
+                :after (progn
+                         (add-to-list 'company-backends 'company-ghc)
+                         (custom-set-variables '(company-ghc-show-info t))))
+         (:name structured-haskell-mode)
          ;; Full recipes I have to make into PR's to upstream
          (:name org-pretty-table
                 :depends (org-mode)
