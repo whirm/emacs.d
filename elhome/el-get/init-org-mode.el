@@ -76,7 +76,6 @@
 (global-set-key (kbd "<f9> g") 'gnus)
 (global-set-key (kbd "<f9> h") 'bh/hide-other)
 (global-set-key (kbd "<f9> n") 'bh/toggle-next-task-display)
-(global-set-key (kbd "<f9> w") 'widen)
 
 (global-set-key (kbd "<f9> I") 'bh/punch-in)
 (global-set-key (kbd "<f9> O") 'bh/punch-out)
@@ -213,7 +212,7 @@
   (interactive)
   (save-excursion
     (beginning-of-line 0)
-    (org-remove-empty-drawer-at "LOGBOOK" (point)))) ;add LOGBOOK as upstream has an old org-mode version or smth
+    (org-remove-empty-drawer-at (point))))
 
 (add-hook 'org-clock-out-hook 'bh/remove-empty-drawer-on-clock-out 'append)
 
@@ -495,8 +494,12 @@
 (setq org-clock-out-when-done t)
 ;; Save the running clock and all clock history when exiting Emacs, load it on startup
 (setq org-clock-persist t)
+(setq org-clock-persist-file "~/.emacs.d/var/org-clock-save.el")
+
 ;; Do not prompt to resume an active clock
-(setq org-clock-persist-query-resume nil)
+(setq org-clock-persist-query-resume nil
+      org-clock-string-limit 25
+      )
 ;; Enable auto clock resolution for finding open clocks
 (setq org-clock-auto-clock-resolution (quote when-no-clock-is-running))
 ;; Include current clocking task in clock reports
@@ -984,9 +987,9 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 (setq org-alphabetical-lists t)
 
 ;; Explicitly load required exporters
-(require 'ox-html)
-(require 'ox-latex)
-(require 'ox-ascii)
+;; (require 'ox-html)
+;; (require 'ox-latex)
+;; (require 'ox-ascii)
 
 (setq org-ditaa-jar-path "~/git/org-mode/contrib/scripts/ditaa.jar")
 (setq org-plantuml-jar-path "~/java/plantuml.jar")
@@ -1021,7 +1024,8 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 ;; Do not prompt to confirm evaluation
 ;; This may be dangerous - make sure you understand the consequences
 ;; of setting this -- see the docstring for details
-;; (setq org-confirm-babel-evaluate nil)
+(setq org-confirm-babel-evaluate nil)
+(setq org-confirm-elisp-link-function nil)
 
 ;; Use fundamental mode when editing plantuml blocks with C-c '
 (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))
@@ -1036,9 +1040,9 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 ;; Inline images in HTML instead of producting links to the image
 (setq org-html-inline-images t)
 ;; Do not use sub or superscripts - I currently don't need this functionality in my documents
-(setq org-export-with-sub-superscripts nil)
+;(setq org-export-with-sub-superscripts nil)
 ;; Use org.css from the norang website for export document stylesheets
-(setq org-html-head-extra "<link rel=\"stylesheet\" href=\"http://doc.norang.ca/org.css\" type=\"text/css\" />")
+;;(setq org-html-head-extra "<link rel=\"stylesheet\" href=\"http://doc.norang.ca/org.css\" type=\"text/css\" />")
 (setq org-html-head-include-default-style nil)
 ;; Do not generate internal css formatting for HTML exports
 (setq org-export-htmlize-output-type (quote css))
@@ -1759,7 +1763,9 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-special-ctrl-k t)
 (setq org-yank-adjusted-subtrees t)
 
-(setq org-id-method (quote uuidgen))
+(setq org-id-method 'uuidgen
+      org-id-locations-file "~/.emacs.d/var/.org-id-locations"
+      )
 
 (setq org-deadline-warning-days 30)
 
@@ -1797,7 +1803,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                     org-wl))
 
 ;; position the habit graph on the agenda to the right of the default
-(setq org-habit-graph-column 50)
+(setq org-habit-graph-column 100)
 
 (run-at-time "06:00" 86400 '(lambda () (setq org-habit-show-habits t)))
 
