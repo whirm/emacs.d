@@ -1230,6 +1230,23 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 
 (setq org-latex-listings t)
 
+;; Need to import it explicitly
+(require 'ox-latex)
+(setq org-latex-classes
+      (append org-latex-classes
+              '(("paper" "\\documentclass[11pt]{paper}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+              '(("assignment" "\\documentclass[11pt]{assignment}"
+                 ("\\part{%s}" . "\\part*{%s}")
+                 ("\\chapter{%s}" . "\\chapter*{%s}")
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\subsubsubsection{%s}" . "\\subsubsubsection*{%s}")))
+              ))
+
 (setq org-html-xml-declaration (quote (("html" . "")
                                        ("was-html" . "<?xml version=\"1.0\" encoding=\"%s\"?>")
                                        ("php" . "<?php echo \"<?xml version=\\\"1.0\\\" encoding=\\\"%s\\\" ?>\"; ?>"))))
