@@ -259,14 +259,16 @@
       (quote (("N" "Notes" tags "NOTE"
                ((org-agenda-overriding-header "Notes")
                 (org-tags-match-list-sublevels t)))
+
               ("h" "Habits" tags-todo "STYLE=\"habit\""
                ((org-agenda-overriding-header "Habits")
                 (org-agenda-sorting-strategy
                  '(todo-state-down effort-up category-keep))))
+
               ("x" "Agenda"
                ((agenda "" nil)
                 (tags "REFILE"
-                      ((org-agenda-overriding-header "Tasks to Refile")
+                      ((org-agenda-overriding-header "Tasks to Refile\nDoes it take les than 5 minutes? Do it now!")
                        (org-tags-match-list-sublevels nil)))
                 (tags-todo "-SOMEDAY-CANCELLED/!"
                            ((org-agenda-overriding-header "Stuck Projects")
@@ -328,6 +330,7 @@
                        (org-agenda-skip-function 'bh/skip-non-archivable-tasks)
                        (org-tags-match-list-sublevels nil))))
                nil)
+
               ("A" "Achivable"
                (
                 (tags "-REFILE/"
@@ -341,6 +344,7 @@
                         '(timestamp-down))))
                 )
                nil)
+
               ("i" "Incoming"
                (
                 (tags "REFILE"
@@ -351,6 +355,7 @@
                             (org-tags-match-list-sublevels t)))
                 )
                nil)
+
               ("r" "Review"
                ((tags-todo "-SOMEDAY-CANCELLED/!"
                            ((org-agenda-overriding-header "Stuck Projects: Remove finished, set next action or mark as someday/maybe")
@@ -400,6 +405,7 @@
                        (org-agenda-skip-function 'bh/skip-non-archivable-tasks)
                        (org-tags-match-list-sublevels nil))))
                nil)
+
               ("n" "Next tasks"
                ((agenda "" nil)
                 (tags-todo "-CANCELLED/!NEXT"
@@ -436,9 +442,10 @@
                             (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)))
                 )
                nil)
+
               (" " "Today"
                ((agenda "" nil)
-                (tags-todo "PRIORITY=\"A\"|PRIORITY=\"B\"|PRIORITY=\"C\"/NEXT"
+                (tags-todo "+PRIORITY=\"A\"\"/NEXT"
                            ((org-agenda-overriding-header (concat "Today's Tasks: REMEMBER: Productivity first, org after, pleasure last"
                                                                   (if bh/hide-scheduled-and-waiting-next-tasks
                                                                       ""
