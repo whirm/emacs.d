@@ -306,13 +306,18 @@
                                yas-prompt-functions '(yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt)
                                yas-use-menu nil)
                          (add-to-list 'yas-snippet-dirs '"~/.emacs.d/elhome/snippets")
-                         (global-set-key (kbd "<C-tab>") 'helm-yas-complete)
-                         (unbind-key "<tab>" yas-minor-mode-map)
+
+                         ;; I don't want to have yasnippet on TAB
+                         (unbind-key "TAB" yas-minor-mode-map)
                          ;; Strangely, just redefining one of the variations below won't work.
                          ;; All rebinds seem to be needed.
                          (define-key yas-minor-mode-map [(tab)]        nil)
                          (define-key yas-minor-mode-map (kbd "TAB")    nil)
                          (define-key yas-minor-mode-map (kbd "<tab>")  nil)
+                         ))
+         (:name helm-c-yasnippet
+                :after (progn
+                         (bind-key "<C-tab>" 'helm-yas-complete yas-minor-mode-map)
                          ))
          (:name popwin
                 :after (progn
