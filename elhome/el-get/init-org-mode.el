@@ -2107,6 +2107,14 @@ value is a string containg the unaligned `org-mode' table."
   (delete-region beg end)
   (org-table-align))
 ;;^
+
+;; Add inherited tags to archived entries
+;; To make org-archive-subtree keep inherited tags, Osamu OKANO suggests to advise the function like this:
+(defadvice org-archive-subtree
+    (before add-inherited-tags-before-org-archive-subtree activate)
+  "add inherited tags before org-archive-subtree"
+  (org-set-tags-to (org-get-tags-at)))
+
 ;; Maintenance stuff
 ;;
 (defun dmj:org-remove-redundant-tags ()
