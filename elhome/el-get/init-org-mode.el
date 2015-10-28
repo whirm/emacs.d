@@ -2080,6 +2080,12 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-odd-levels-only nil)
 
+;; Change looks of the ellipsized content
+(set-display-table-slot
+ standard-display-table
+ 'selective-display
+ (let ((face-offset (* (face-id 'shadow) (lsh 1 22))))
+   (vconcat (mapcar (lambda (c) (+ face-offset c)) " … "))))
 ;; Maintenance stuff
 ;;
 (defun dmj:org-remove-redundant-tags ()
