@@ -48,6 +48,10 @@
                 :after (progn
                          (bind-key "C-<" 'goto-last-change-reverse)
                          (bind-key "C->" 'goto-last-change)))
+         (:name swiper
+                :after (progn
+                         (bind-key "C-s" 'swiper)
+                         ))
          (:name helm)
          ;; wgrep-helm won't work if this is not manually loaded first?
          (:name wgrep
