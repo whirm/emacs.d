@@ -295,6 +295,8 @@
                 ;; needs to go before yasnippet
                 :after (progn
                          ;;(require 'ansible)
+                         (bind-key "C-c C-c" 'compile ansible::key-map)
+                         ))
          (:name yasnippet
                 :after (progn
                          (require 'yasnippet)
