@@ -12,7 +12,7 @@
  helm-ff-skip-boring-files t
  helm-ff-tramp-not-fancy nil
  helm-findutils-ignore-boring-files t
- helm-for-files-preferred-list (quote (helm-source-buffers-list helm-source-recentf helm-source-bookmarks helm-source-file-cache helm-source-files-in-current-dir))
+ helm-for-files-preferred-list '(helm-source-buffers-list helm-source-recentf helm-source-bookmarks helm-source-file-cache helm-source-files-in-current-dir)
  helm-imenu-delimiter " → "
  helm-locate-command "locate %s -r %s"
  helm-mode t
@@ -22,7 +22,6 @@
  )
 
 (add-to-list 'helm-boring-file-regexp-list "TAGS")
-
 
 (helm-mode 1)
 (helm-adaptative-mode 1)
