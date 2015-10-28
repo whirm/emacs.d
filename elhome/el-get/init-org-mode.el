@@ -2026,8 +2026,8 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;;          '(lambda () (setq fill-column 72))
 ;;          'append)
 
-;; flyspell mode for spell checking everywhere
-(add-hook 'org-mode-hook 'turn-on-flyspell 'append)
+;; flyspell mode for spell checking everywhere NOPE makes org-capture block all the time when typing!
+;;(add-hook 'org-mode-hook 'turn-on-flyspell 'append)
 
 ;; Disable keys in org-mode
 ;;    C-c [
