@@ -2247,4 +2247,4 @@ inherited by a parent headline."
   ;;    (org-agenda-goto-calendar)))
   )
 
-(run-with-idle-timer 300 t (lambda () (wh:show-agenda " ")))
+(run-with-idle-timer 600 t (lambda () (wh:show-agenda " ")))
