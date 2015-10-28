@@ -625,8 +625,9 @@ command buffer, in which case returns the buffer directly."
                          (elpy-enable)
                          (elpy-use-ipython)
 
-                         ;;Disable hook as it has a messed up keybind
-                         (remove-hook 'python-mode-hook 'pylint-python-hook)
+                         ;;Disabled hooks they have conflicting keybinds
+                         (remove-hook 'python-mode-hook 'pylint-add-key-bindings)
+                         (remove-hook 'python-mode-hook 'pylint-add-menu-items)
                          ;;(add-hook 'python-mode-hook 'py-autopair-mode-on)
 
                          ;; C-c C-% will set a buffer local hook to use mode-compile after saving
