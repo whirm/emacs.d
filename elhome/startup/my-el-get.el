@@ -649,6 +649,15 @@ command buffer, in which case returns the buffer directly."
          (:name align
                 :after (progn
                          (require 'align)))
+
+         ;; From there on stuff in trial phase.
+         (:name bts-github
+                :after (progn
+                         (require 'bts-github)))
+         (:name yaml-mode
+                :after (progn
+                         (add-hook 'yaml-mode-hook (lambda ()
+                                                     (bind-key "C-c C-c" 'compile yaml-mode-map)))))
          (:name package
                 :post-init (progn
                              ;; The following overrides the upstream recipe's post-init to not add
