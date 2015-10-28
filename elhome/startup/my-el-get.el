@@ -649,6 +649,24 @@ command buffer, in which case returns the buffer directly."
          (:name align
                 :after (progn
                          (require 'align)))
+         (:name package
+                :post-init (progn
+                             ;; The following overrides the upstream recipe's post-init to not add
+                             ;; (broken) package repositories I don't want to my list.
+
+                             ;; add package.rcp's old `package-user-dir' to
+                             ;; `package-directory-list', in case there are
+                             ;; packages installed there from before
+                             (let ((old-package-user-dir
+                                    (expand-file-name
+                                     (convert-standard-filename
+                                      (concat (file-name-as-directory
+                                               default-directory)
+                                              "elpa")))))
+                               (when (file-directory-p old-package-user-dir)
+                                 (add-to-list 'package-directory-list old-package-user-dir)))
+                             ;; Ensure `package-archives' is defined
+                             (setq package-archives (bound-and-true-p package-archives))))
          ;; Haskell stuff
          (:name haskell-mode
                 :after (progn
