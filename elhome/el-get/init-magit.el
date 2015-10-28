@@ -48,6 +48,8 @@
  magit-show-child-count t
  magit-status-buffer-switch-function (quote switch-to-buffer))
 
+(require 'magit)
+
 (autoload 'magit-define-popup-action "magit")
 
 (bind-key "C-x C-z" 'magit-status)

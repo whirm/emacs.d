@@ -4,6 +4,8 @@
 ;; (setq
 ;;  helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
 ;;  helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f")
+(require 'helm-files)
+
 (setq
  helm-adaptive-history-file "~/.emacs.d/var/helm-adaptive-history"
  helm-bookmark-show-location t
@@ -54,7 +56,6 @@
 (defun helm-mini-devel ()
   "helm-mini for prog-modes (TODO entries, helm-projectile, buffers and recentf)"
   (interactive)
-  (require 'helm-files)
   (require 'helm-misc)
   (require 'helm-projectile)
   (let ((helm-ff-transformer-show-only-basename nil))

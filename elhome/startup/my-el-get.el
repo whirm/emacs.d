@@ -25,8 +25,10 @@
          (:name rich-minority)
          (:name emacs-async)
          (:name bind-key
+                :type elpa
                 :after (progn
                          (require 'bind-key)))
+
          (:name rw-ispell
                 :type elpa)
          (:name rw-language-and-country-codes
@@ -93,11 +95,14 @@
                                bbdb-mua-pop-up-window-size 5)
                          (add-hook 'mu4e-view-mode-hook 'bbdb-mua-auto-update)
                          (bind-key "R" 'bbdb-merge-records bbdb-mode-map)
+
+                         ;; Already done in init-mu4e.el
+                         ;;(setq mu4e-compose-complete-addresses nil)
                          ))
          (:name org-mode
                 ;; :checkout "release_8.2.10"
                 ;; :checkout "release_8.3beta" ;broken
-                ;;:checkout "release_8.1.2"
+                ;; :checkout "release_8.1.2"
                 )
          (:name org-pomodoro
                 :after (progn
@@ -185,7 +190,7 @@
                                                      (local-set-key (kbd "<M-down>") 'git-gutter:next-hunk)
                                                      ))
                          ))
-
+         ;;(:name origami)
          (:name html-accent
                 :after (progn
                          (autoload 'html-accent "html-accent" "Accent HTML" t)
@@ -285,7 +290,7 @@
          (:name ansible
                 ;; needs to go before yasnippet
                 :after (progn
-                         (require 'ansible)))
+                         ;;(require 'ansible)
          (:name yasnippet
                 :after (progn
                          (require 'yasnippet)
@@ -453,12 +458,14 @@
          (:name flyguess
                 :type emacswiki
                 :after (progn
+                         (autoload 'flyguess-guess "flyguess")
+
                          (setq flyguess-check-percentage 50
                                flyguess-mininum-buffer-size 200
                                flyguess-dictionary-list '("ca_ES_hunspell" "en_US_hunspell" "es_ES_hunspell"))
 
                          ;; Activate Flyguess when composing a mail
-                         ;;(add-hook 'mu4e-compose-mode-hook 'flyguess-guess)
+                         ;; (add-hook 'mu4e-compose-mode-hook 'flyguess-guess)
 
                          ;; When the language is guessed, change the dictionary, activate flyspell
                          ;; and recheck the buffer
@@ -475,8 +482,7 @@
                          (add-hook 'tuareg-mode-hook (lambda ()
                                                        (setq tuareg-interactive-program "utop")
                                                        (bind-key "C-z" 'merlin-enclosing-expand tuareg-mode-map)
-                                                       ))
-                         ))
+                                                       ))))
          (:name utop)
          (:name merlin
                 :after (progn
@@ -596,9 +602,8 @@ command buffer, in which case returns the buffer directly."
                          (global-company-mode 1)
                          ))
          (:name elpy
-                ;;:checkout "473de81727de913a580f826511dddb233930dd11"
-                :checkout "release"
-                ;;:checkout "importmagic"
+                ;; :checkout "release"
+                :checkout "master"
                 :after (progn
                          (setq elpy-default-minor-modes '(eldoc-mode yas-minor-mode subword-mode)
                                elpy-rpc-project-specific t
@@ -634,8 +639,7 @@ command buffer, in which case returns the buffer directly."
          (:name elfeed
                 :after (progn
                          (setq elfeed-db-directory (concat user-emacs-directory "/var/elfeed/")
-                               elfeed-sort-order 'ascending
-                          )))
+                               elfeed-sort-order 'ascending)))
          (:name align
                 :after (progn
                          (require 'align)))
@@ -674,7 +678,7 @@ command buffer, in which case returns the buffer directly."
          css-palette
          cssh
          ein
-         ess
+         ;; ess
          ess-smart-underscore
          fringe-helper
          fuzzy
@@ -687,17 +691,14 @@ command buffer, in which case returns the buffer directly."
          linum-relative
          list-utils ;; something depends on this but is not on the recipe
          lua-mode
-         magit-gh-pulls ;; TODO: check if I need to configure it
          magit-view-file
          mingus
          newpaste
          nodejs-repl
          nsis-mode
          org-caldav ;; TODO configure!
-         org-magit
          page-break-lines
          popup
-         smooth-scrolling
          swank-js
          tidy
          unbound
