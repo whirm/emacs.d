@@ -1890,7 +1890,18 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (defun bh/insert-inactive-timestamp ()
   (interactive)
-  (org-insert-time-stamp nil t t nil nil nil))
+  ;; (defun org-insert-time-stamp (time &optional with-hm inactive pre post extra)
+
+  (let ((fmt (funcall 'cdr org-time-stamp-formats))
+	stamp)
+    (setq fmt (concat "[" (substring fmt 1 -1) "]"))
+    (setq stamp (format-time-string fmt nil))
+    (org-set-property "CREATED" stamp)
+    (setq org-last-inserted-timestamp stamp)
+    (org-cycle-hide-drawers 'children)
+    )
+  ;; (org-insert-time-stamp nil t t nil nil nil)
+  )
 
 (defun bh/insert-heading-inactive-timestamp ()
   (save-excursion
