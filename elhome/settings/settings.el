@@ -29,6 +29,29 @@
  '(auto-save-list-file-prefix "~/.emacs.d/var/auto-save-list/.saves-")
  '(autopep8-args " --max-line-length=120 --ignore=E501 -a -")
  '(autopep8-path "/usr/bin/autopep8")
+ '(bbdb-layout-alist
+   (quote
+    ((one-line
+      (order phone mail-alias mail notes)
+      (name-end . 24)
+      (toggle . t))
+     (multi-line
+      (omit creation-date timestamp name-format name-face bbdb-id asynk:owncloud0bbdb:cd asynk:owncloud0bbdb:bb folder)
+      (indentation . 21)
+      (toggle . t))
+     (pop-up-multi-line
+      (omit creation-date timestamp name-format name-face)
+      (indentation . 21))
+     (full-multi-line
+      (indentation . 21)))))
+ '(bbdb-merge-xfield-function-alist
+   (quote
+    ((creation-date . bbdb-merge-string-least)
+     (timestamp . bbdb-merge-string-most)
+     (bbdb-id . bbdb-merge-string-most)
+     (asynk:owncloud0bbdb:cd . ignore)
+     (notes: . bbdb-merge-concat-remove-duplicates)
+     (bbdb-id . ignore))))
  '(bookmark-default-file "~/.emacs.d/var/bookmarks")
  '(browse-url-browser-function (quote browse-url-generic))
  '(browse-url-generic-program "iceweasel")
