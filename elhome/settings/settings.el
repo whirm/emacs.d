@@ -133,6 +133,7 @@
  '(recentf-exclude (quote (".*/.mail/.*")))
  '(recentf-max-saved-items 50)
  '(recentf-mode t)
+ '(recentf-save-file "~/.emacs.d/var/recentf")
  '(revert-without-query (quote ("*")))
  '(revive-plus:last-wconf-file "~/.emacs.d/var/revive/last-wconf")
  '(revive-plus:wconf-archive-file "~/.emacs.d/var/revive/wconf-archive")
