@@ -212,7 +212,7 @@
  '(unicode-fonts-skip-fonts (quote ("Libertine Display O")))
  '(unicode-progress-reporter-type "Triangles")
  '(url-configuration-directory "~/.emacs.d/var/url/")
- '(url-privacy-level (quote paranoid))
+ '(url-privacy-level (quote (email os lastloc cookie)))
  '(virtualenv-root "/var/data/feina/code/propis/scatter/venv")
  '(w3m-default-display-inline-images t)
  '(wg-buffer-auto-association (quote strong))
