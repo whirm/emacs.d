@@ -56,7 +56,6 @@
  '(mu4e-update-interval 1200)
  '(mu4e-view-image-max-height 1000)
  '(mu4e-view-image-max-width 1200)
- '(mu4e-view-mode-hook (quote (turn-on-visual-line-mode)))
  '(mu4e-view-prefer-html t)
  '(mu4e-view-show-addresses t))
 (custom-set-faces
