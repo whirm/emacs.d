@@ -206,6 +206,7 @@
  '(tls-checktrust (quote ask))
  '(tramp-auto-save-directory "~/.emacs.d/var/tramp-autosaves")
  '(tramp-default-method "scp")
+ '(tramp-persistency-file-name "/home/whirm/.emacs.d/var/tramp")
  '(unicode-fonts-fallback-font-list (quote ("Ttyp0" "Symbola" "Quivira")))
  '(unicode-fonts-skip-fonts (quote ("Libertine Display O")))
  '(unicode-progress-reporter-type "Triangles")
