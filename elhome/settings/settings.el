@@ -68,7 +68,7 @@
  '(cua-rectangle-mark-key [C-M-return])
  '(custom-safe-themes
    (quote
-    ("6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "025354235e98db5e7fd9c1a74622ff53ad31b7bde537d290ff68d85665213d85" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "6fe6ab4abe97a4f13533e47ae59fbba7f2919583f9162b440dd06707b01f7794" default)))
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "025354235e98db5e7fd9c1a74622ff53ad31b7bde537d290ff68d85665213d85" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "6fe6ab4abe97a4f13533e47ae59fbba7f2919583f9162b440dd06707b01f7794" default)))
  '(default-input-method "catalan-prefix")
  '(dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$|.*\\.pyc$")
  '(ecb-options-version "2.40")
@@ -140,6 +140,59 @@
    (quote
     (" hl-p" " SliNav" " MRev" " Helm" " me" " Undo-Tree" " AC" " GitGutter" " pair" " Rbow" " Elpy" " ||")))
  '(rm-excluded-modes (quote (" hl-p" " SliNav" " MRev")))
+ '(safe-local-variable-values
+   (quote
+    ((org-export-latex-append-header . "\\renewcommand\\@maketitle{%
+  \\newpage
+  \\null
+  \\vskip 2em%
+  \\begin{center}%
+  \\let \\footnote \\thanks
+    {% set colour and font for the title
+    \\color{NavyBlue}\\sffamily\\bfseries\\Huge
+    \\@title \\par}%
+    \\vskip 1.5em%
+    {% set colour and font for the author
+      \\color{CornflowerBlue}\\sffamily\\large
+      \\lineskip .5em%
+      \\begin{tabular}[t]{c}%
+        @author
+      \\end{tabular}\\par}%
+    \\vskip 1em%
+    {% set colour and font for the date
+    \\color{CornflowerBlue}\\sffamily\\large \\@date}%
+  \\end{center}%
+  \\par
+  \\vskip 1.5em}
+")
+     (org-export-latex-append-header . "\\usepackage{graphicx}
+\\usepackage{multicol}
+\\geometry{headheight=47pt}
+\\fancyhead[L]{\\LARGE This is the header title}
+\\fancyfoot[L]{\\small Overridden filename\\\\ \\today}
+")
+     (org-confirm-babel-evaluate)
+     (projectile-project-compilation-cmd . "ANSIBLE_NOCOWS=1 ansible-playbook forums_tribler.yml")
+     (python-shell-interpreter . "ipython3")
+     (python-shell-interpreter . ipython3)
+     (eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"
+           (add-hook
+            (quote write-contents-functions)
+            (lambda nil
+              (delete-trailing-whitespace)
+              nil))
+           (require
+            (quote whitespace))
+           "Sometimes the mode needs to be toggled off and on."
+           (whitespace-mode 0)
+           (whitespace-mode 1))
+     (whitespace-line-column . 80)
+     (whitespace-style face tabs trailing lines-tail)
+     (test-case-name . twisted\.protocols\.test\.test_basic)
+     (helm-grep-preferred-ext . \.py)
+     (pydb-cmdline . "/var/data/feina/code/delft/tribler/Tribler/Main/tribler.py")
+     (eval setenv "DISPLAY" ":1")
+     (header-auto-update-enabled))))
  '(scroll-bar-mode nil)
  '(semantic-imenu-auto-rebuild-directory-indexes t)
  '(semantic-mode t)
