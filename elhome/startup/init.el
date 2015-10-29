@@ -60,6 +60,15 @@
 ;; Move files to trash when deleting
 (setq delete-by-moving-to-trash t)
 
+;; Transparently open compressed files
+(auto-compression-mode t)
+
+;; Easily navigate camelcased words
+(global-subword-mode 1)
+
+;; Real emacs knights don't use shift to mark things
+(setq shift-select-mode nil)
+
 ;; Overwrite region when pasting/writing
 ;;(delete-selection-mode +1) ;; conflicts with autoparens
 
@@ -102,6 +111,9 @@
 (global-set-key "\M-w" 'clipboard-kill-ring-save)
 (global-set-key "\C-y" 'clipboard-yank)
 ;;^
+
+;; Let apropos search deeper
+(setq apropos-do-all t)
 
 ;; Disable popup windows
 (defadvice yes-or-no-p (around prevent-dialog activate)
@@ -420,6 +432,13 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 (add-hook 'prog-mode-hook (lambda ()
                             (local-set-key (kbd "C-#") 'comment-or-uncomment-region)
                             ))
+
+;; Sentences do not need double spaces to end. Period.
+(set-default 'sentence-end-double-space nil)
+
+;; Increase the too short by default url-queue-timeout (elfeed failes all the time otherwise)
+(setf url-queue-timeout 30)
+
 ;; EO Behaviour
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
