@@ -178,6 +178,7 @@
                         (concat org-directory "someday.org")
                         (concat org-directory "mobile.org")
                         (concat org-directory "notes.org")
+                        (concat org-directory "uoc.org")
                         ;;(concat org-directory "diary.org.gpg")
                         ))
 
