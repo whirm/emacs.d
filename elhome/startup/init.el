@@ -437,12 +437,17 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 ;; Sentences do not need double spaces to end. Period.
 (set-default 'sentence-end-double-space nil)
 
+;; Open bitbake files with shell-script-mode
+(add-to-list 'auto-mode-alist '("\\.bbclass\\'" . makefile-mode))
+(add-to-list 'auto-mode-alist '("\\.bb\\'" . makefile-mode))
+(add-to-list 'auto-mode-alist '("\\.inc\\'" . makefile-mode))
+;;^
+
 ;; Increase the too short by default url-queue-timeout (elfeed failes all the time otherwise)
 (setf url-queue-timeout 30)
 
 ;; EO Behaviour
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Utility functions
