@@ -429,8 +429,9 @@ Toggles between: “all lower”, “Init Caps”, “ALL CAPS”."
 (global-set-key "\M-c" 'toggle-letter-case)
 ;;^
 
+;; Comment or uncomment region with M-;
 (add-hook 'prog-mode-hook (lambda ()
-                            (local-set-key (kbd "C-#") 'comment-or-uncomment-region)
+                            (local-set-key (kbd "M-;") 'whole-line-or-region-comment-dwim-2)
                             ))
 
 ;; Sentences do not need double spaces to end. Period.
