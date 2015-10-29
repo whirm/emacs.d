@@ -85,6 +85,7 @@
  '(fic-highlighted-words (quote ("FIXME" "TODO" "TODO:" "XXX" "BUG")))
  '(fill-column 120)
  '(flycheck-check-syntax-automatically (quote (save idle-change mode-enabled)))
+ '(flycheck-checker-error-threshold 500)
  '(flycheck-idle-change-delay 5)
  '(font-use-system-font t)
  '(global-auto-complete-mode nil)
