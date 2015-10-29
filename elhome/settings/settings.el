@@ -73,6 +73,8 @@
  '(dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$|.*\\.pyc$")
  '(ecb-options-version "2.40")
  '(ecb-source-path (quote ("~/code/")))
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(eww-download-directory "~/INCOMING/")
  '(face-font-family-alternatives
    (quote
