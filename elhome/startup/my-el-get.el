@@ -51,6 +51,8 @@
          (:name swiper
                 :after (progn
                          (bind-key "C-s" 'swiper)
+                         (bind-key "C-r" 'swiper)
+                         (bind-key "C-c C-r" 'ivy-resume)
                          ))
          (:name helm)
          ;; wgrep-helm won't work if this is not manually loaded first?
