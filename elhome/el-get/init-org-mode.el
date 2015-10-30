@@ -1944,6 +1944,21 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-export-with-timestamps nil)
 
+(add-to-list 'org-export-filter-timestamp-functions
+             #'endless/filter-timestamp)
+(defun endless/filter-timestamp (trans back _comm)
+  "Remove <> around time-stamps."
+  (pcase back
+    ((or `jekyll `html)
+     (replace-regexp-in-string "&[lg]t;" "" trans))
+    (`latex
+     (replace-regexp-in-string "[<>]" "" trans))))
+
+(setq-default org-display-custom-times t)
+(setq org-time-stamp-custom-formats
+      '("<%d %b %Y>" . "<%d/%m/%y %a %H:%M>"))
+
+
 (setq org-return-follows-link t)
 
 (custom-set-faces
