@@ -307,10 +307,14 @@
          (:name yasnippet
                 :after (progn
                          (require 'yasnippet)
+
                          (yas-global-mode 1)
-                         (yas/load-directory "~/.emacs.d/elhome/snippets")
+                         ;;(yas-load-directory "~/.emacs.d/elhome/snippets")
                          (setq yas-snippet-dirs (delete "~/.emacs.d/snippets" yas-snippet-dirs)
-                               yas-prompt-functions '(yas-dropdown-prompt yas-completing-prompt yas-ido-prompt yas-no-prompt)
+                               yas-prompt-functions '(yas-dropdown-prompt
+                                                      yas-completing-prompt
+                                                      yas-ido-prompt
+                                                      yas-no-prompt)
                                yas-use-menu nil)
                          (add-to-list 'yas-snippet-dirs '"~/.emacs.d/elhome/snippets")
 
