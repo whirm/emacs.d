@@ -599,6 +599,7 @@
                          (projectile-global-mode t)
                          ))
          (:name iedit)
+         ;; (:name eww-lnum)
          (:name web-mode
                 :after (progn
                          (require 'web-mode)
@@ -798,6 +799,7 @@ command buffer, in which case returns the buffer directly."
          css-palette
          cssh
          ein
+         ;; ical-pull
          ;; ess
          ess-smart-underscore
          fringe-helper
