@@ -17,6 +17,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Looks
 
+;; Fallback font for symbols, now I need to find a font that looks good at the size I use
+;;(set-fontset-font "fontset-default" '(#x2018 . #x1ffff) (font-spec :size 11 :name "DejaVu"))
+
 ;; Grey mouse cursor
 (set-mouse-color "grey")
 
@@ -165,6 +168,10 @@ line instead."
 ;; Cycle through amount of spaces (all->one->none)
 (global-set-key (kbd "S-SPC") 'cycle-spacing)
 
+;; TODO decide if I want to set this to t
+;;set-mark-command-repeat-pop
+
+
 ;;Not sure if I like those...
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
@@ -183,6 +190,9 @@ line instead."
 
 ;; don't accelerate scrolling
 (setq mouse-wheel-progressive-speed nil)
+
+;; make scroll up and down symmetric
+(setq scroll-preserve-screen-position 'always)
 
 ;; Only show line numbers when being asked for line number
 (defun goto-line-with-feedback ()

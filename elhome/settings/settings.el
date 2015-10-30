@@ -130,6 +130,7 @@
  '(popwin:popup-window-height 0.4)
  '(predictive-auto-learn t t)
  '(predictive-mode t)
+ '(pretty-control-l-mode t)
  '(projectile-globally-ignored-files (quote ("TAGS" "*.pyc" "*.pyo" "*.elc")))
  '(projectile-known-projects-file "~/.emacs.d/var/projectile-bookmarks.eld")
  '(projectile-mode-line (quote Projectile))
