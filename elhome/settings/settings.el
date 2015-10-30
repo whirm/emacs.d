@@ -115,6 +115,7 @@
  '(ispell-extra-args
    (quote
     ("--sug-mode=ultra" "--run-together" "--run-together-limit=5" "--run-together-min=2")))
+ '(kill-whole-line t)
  '(list-colors-sort (quote luminance))
  '(magithub-use-ssl t)
  '(make-header-hook
