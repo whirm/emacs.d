@@ -131,12 +131,17 @@
                 :compile "lisp/*.el"
                 :depends (cl-lib dash)
                 :load-path ("lisp"))
+         (:name magit-gh-pulls)
+         (:name magit-view-file)
+         (:name org-magit)
          (:name elisp-slime-nav
                 :after (progn
                          ;; Elisp go-to-definition with M-. and back again with M-,
                          (autoload 'elisp-slime-nav-mode "elisp-slime-nav")
                          (add-hook 'emacs-lisp-mode-hook (lambda () (elisp-slime-nav-mode t)))
                          ))
+         (:name paredit)
+         (:name paredit-everywhere)
          (:name asciidoc
                 :after (progn
                          (autoload 'doc-mode "doc-mode" nil t)
