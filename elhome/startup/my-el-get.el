@@ -291,6 +291,19 @@
                          (add-hook 'prog-mode-hook 'fic-mode t)
                          ))
          ;;(:name emacs-goodies-el :type apt-get)
+         (:name wrap-region
+                :depends (dash)
+                :after (progn
+                         (require 'wrap-region)
+                         (wrap-region-add-wrappers
+                          '(("*" "*" nil org-mode)
+                            ("~" "~" nil org-mode)
+                            ("/" "/" nil org-mode)
+                            ("=" "=" nil org-mode)
+                            ("_" "_" nil org-mode)
+                            ("$" "$" nil (org-mode latex-mode))))
+                         (add-hook 'org-mode-hook 'wrap-region-mode)
+                         (add-hook 'latex-mode-hook 'wrap-region-mode)))
          (:name autopair
                 :after (progn
                          (add-hook 'prog-mode-hook (lambda ()
