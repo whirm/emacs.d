@@ -1654,9 +1654,12 @@ so change the default 'F' binding in the agenda to allow both"
 (setq org-agenda-start-on-weekday 1)
 
 ;; Enable display of the time grid so we can see the marker for the current time
-(setq org-agenda-time-grid (quote ((daily today remove-match)
-                                   #("----------------" 0 16 (org-heading t))
-                                   (0900 1100 1300 1500 1700))))
+;; (setq org-agenda-time-grid (quote ((daily today remove-match)
+;;                                    #("----------------" 0 16 (org-heading t))
+;;                                    (0900 1100 1300 1500 1700))))
+
+;; I'm finding it distracting, so let's disable it for now:
+(setq org-agenda-use-time-grid nil)
 
 ;; Display tags farther right
 (setq org-agenda-tags-column -102)
@@ -1794,7 +1797,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
       org-id-locations-file "~/.emacs.d/var/.org-id-locations"
       )
 
-(setq org-deadline-warning-days 30)
+(setq org-deadline-warning-days 15)
 
 (setq org-table-export-default-format "orgtbl-to-csv")
 
