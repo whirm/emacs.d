@@ -117,6 +117,8 @@
     ("--sug-mode=ultra" "--run-together" "--run-together-limit=5" "--run-together-min=2")))
  '(kill-whole-line t)
  '(list-colors-sort (quote luminance))
+ '(magit-push-always-verify nil)
+ '(magit-save-repository-buffers (quote dontask))
  '(magithub-use-ssl t)
  '(make-header-hook
    (quote
