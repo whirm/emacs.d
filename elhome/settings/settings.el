@@ -133,6 +133,7 @@
  '(projectile-mode-line (quote Projectile))
  '(projectile-mode-line-lighter "" t)
  '(projectile-use-git-grep t)
+ '(pusher:centering-width 125)
  '(py-autopair-mode t)
  '(py-set-fill-column-p t)
  '(pylint-options "--output-format=parseable --max-line-length=120")
