@@ -27,7 +27,7 @@
  '(ansi-color-names-vector
    ["black" "red3" "green3" "yellow3" "DodgerBlue2" "magenta3" "cyan3" "gray90"])
  '(auto-save-list-file-prefix "~/.emacs.d/var/auto-save-list/.saves-")
- '(autopep8-args " --max-line-length=120 --ignore=E501 -a -")
+ '(autopep8-args " --max-line-length=120 --ignore=E501 -aaa -")
  '(autopep8-path "/usr/bin/autopep8")
  '(bbdb-layout-alist
    (quote
