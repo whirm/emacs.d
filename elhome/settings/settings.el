@@ -67,6 +67,7 @@
  '(column-number-mode t)
  '(company-ghc-show-info t)
  '(compilation-always-kill t)
+ '(compilation-auto-jump-to-first-error nil)
  '(compilation-scroll-output t)
  '(cua-rectangle-mark-key [C-M-return])
  '(custom-safe-themes
