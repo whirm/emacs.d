@@ -36,13 +36,14 @@
          (:name rw-hunspell
                 :type elpa
                 :after (progn
-                         (require 'rw-hunspell)
-                         (setq ispell-extra-args '("--sug-mode=ultra")
-                               ispell-program-name "hunspell"
-                               rw-hunspell-dicpath-list '("/var/lib/dictionaries-common/hunspell" "/usr/share/hunspell")
-                               rw-hunspell-make-dictionary-menu t
-                               rw-hunspell-use-rw-ispell t)
-                         (rw-hunspell-setup))
+                         ;; (require 'rw-hunspell)
+                         ;; (setq ispell-extra-args '("--sug-mode=ultra")
+                         ;;       ispell-program-name "hunspell"
+                         ;;       rw-hunspell-dicpath-list '("/var/lib/dictionaries-common/hunspell" "/usr/share/hunspell")
+                         ;;       rw-hunspell-make-dictionary-menu t
+                         ;;       rw-hunspell-use-rw-ispell t)
+                         ;; (rw-hunspell-setup)
+                         )
                 :depends (rw-ispell rw-language-and-country-codes))
          (:name goto-last-change
                 :after (progn
@@ -479,15 +480,15 @@
          ;;                 ;; '(erc-timestamp-face ((t (:foreground "chartreuse4" :weight bold))) t)
          ;;                 ))
 
-         (:name deferred-flyspell
-                :after (progn
-                         (deferred-flyspell:config)
-                         ;; Use flyspell now that deferred-flyspell is enabled
-                         ;;(add-hook 'prog-mode-hook 'flyspell-prog-mode t)
-                         ;;(add-hook 'message-mode-hook 'flyspell-mode t)
-                         ;;(add-hook 'text-mode-hook 'flyspell-mode t)
-                         ;;^
-                         ))
+         ;; (:name deferred-flyspell
+         ;;        :after (progn
+         ;;                 ;; (deferred-flyspell:config)
+         ;;                 ;; Use flyspell now that deferred-flyspell is enabled
+         ;;                 ;;(add-hook 'prog-mode-hook 'flyspell-prog-mode t)
+         ;;                 ;;(add-hook 'message-mode-hook 'flyspell-mode t)
+         ;;                 ;; (add-hook 'text-mode-hook 'flyspell-mode t)
+         ;;                 ;;^
+         ;;                 ))
          (:name insert-shebang
                 :type elpa
                 :after (progn
