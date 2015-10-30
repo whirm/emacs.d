@@ -235,6 +235,7 @@
  '(wg-buffer-auto-association (quote strong))
  '(wg-load-last-workgroup t)
  '(wg-remap-bury-buffer nil)
+ '(which-key-separator "  > ")
  '(workgroups-everywhere t)
  '(workgroups-mode t)
  '(x-select-enable-clipboard nil)

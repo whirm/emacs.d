@@ -71,6 +71,12 @@
                                                         (setq-local helm-dash-docsets '("OCaml"))))
                          ))
          (:name hydra)
+         (:name which-key
+                :after (progn
+                         ;TODO: Customitzar aixo!
+                         (which-key-mode)
+                         (which-key-setup-side-window-right-bottom)
+                        ))
          (:name undo-tree-mode
                 :type builtin
                 :after (progn
