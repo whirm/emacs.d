@@ -752,6 +752,18 @@ command buffer, in which case returns the buffer directly."
                          (custom-set-variables '(company-ghc-show-info t))))
          (:name structured-haskell-mode)
          ;; Full recipes I have to make into PR's to upstream
+         (:name jenkins
+                :dpends (dash json)
+                :type github
+                :branch "master"
+                :pkgname "rmuslimov/jenkins.el"
+                :after (progn
+                         (setq jenkins-api-token "bc7834c1ba369c94e0446fbaa3799575"
+                               jenkins-url "https://jenkins.tribler.org/"
+                               jenkins-username "whirm")
+                         ;; (setq jenkins-viewname "<viewname>") ;; if you're not using views skip this line
+                         )
+                )
          (:name org-pretty-table
                 :depends (org-mode)
                 :type github
