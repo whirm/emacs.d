@@ -2251,6 +2251,16 @@ inherited by a parent headline."
 
 ;; ^
 
+;; GTD Flows
+
+;TODO: Implement this some day
+;; (defun wh:gtd-process-inbox ()
+;;   "Interactively process all inbox entries"
+;;   (interactive "P")
+;;   (org-map-entries
+;;    '(message ))
+;;   )
+
 ;; org-mobile stuff
 ;;
 (require 'org-mobile)
