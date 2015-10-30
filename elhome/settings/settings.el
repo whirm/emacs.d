@@ -79,6 +79,7 @@
  '(ecb-source-path (quote ("~/code/")))
  '(ediff-split-window-function (quote split-window-horizontally))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(erc-server-connect-function (quote wh-client-cert-open-network-stream))
  '(eww-download-directory "~/INCOMING/")
  '(face-font-family-alternatives
    (quote

@@ -378,7 +378,28 @@
          (:name markdown-mode
                 :after (progn
                          (require 'markdown-mode)))
-         (:name weechat)
+         (:name sx)
+         (:name shorten) ;; tracking depends on it
+         (:name tracking
+                ;; weechat-tracking module depends on it
+                :after (progn
+                         (require 'tracking)))
+         (:name weechat
+                :after (progn
+                         ))
+         ;; Circe doesn't support client cert auth either :(
+         ;; (:name circe
+         ;;        :type elpa
+         ;;        :after (progn
+         ;;                 (setq circe-network-options
+         ;;                       '(("Freenode"
+         ;;                          :tls t
+         ;;                          :nick "whirm"
+         ;;                          :sasl-username "whirm"
+         ;;                          :sasl-password "my-password"
+         ;;                          :channels ("#emacs-circe")
+         ;;                          )))))
+
          ;; (:name erc
          ;;        ;; │18:51:40        whirm | is anybody using ERC/circe with client side cert auth?
          ;;        ;; │18:55:20  wgreenhouse | whirm: it's possible with ERC, through tweaking erc-server-connect-function
