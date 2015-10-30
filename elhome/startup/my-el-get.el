@@ -664,6 +664,7 @@ command buffer, in which case returns the buffer directly."
                                company-show-numbers t)
                          (global-company-mode 1)
                          ))
+         (:name company-quickhelp)
          (:name elpy
                 ;; :checkout "release"
                 :checkout "master"
