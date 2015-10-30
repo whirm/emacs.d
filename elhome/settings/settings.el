@@ -223,6 +223,14 @@
  '(url-privacy-level (quote (email os lastloc cookie)))
  '(virtualenv-root "/var/data/feina/code/propis/scatter/venv")
  '(w3m-default-display-inline-images t)
+ '(weechat-auto-monitor-buffers t)
+ '(weechat-buffer-kill-buffers-on-disconnect t)
+ '(weechat-connect-hook (quote (weechat-re-monitor-buffers weechat-auto-monitor)))
+ '(weechat-modules
+   (quote
+    (weechat-button weechat-complete weechat-spelling weechat-tracking weechat-image)))
+ '(weechat-prompt "         [%10n] ")
+ '(weechat-sync-buffer-read-status t)
  '(wg-buffer-auto-association (quote strong))
  '(wg-load-last-workgroup t)
  '(wg-remap-bury-buffer nil)
