@@ -806,7 +806,6 @@ command buffer, in which case returns the buffer directly."
          git-timemachine
          gnuplot-mode
          guru-mode
-         helm-c-yasnippet
          jam-mode
          linum-relative
          list-utils ;; something depends on this but is not on the recipe
