@@ -9,6 +9,7 @@
 (load "server")
 (unless (server-running-p) (server-start))
 
+;; (add-hook 'org-mode-hook 'x-focus-frame)
 
 ;; EO Pre-init
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -108,9 +109,42 @@
 ;;^
 
 ;; Sync primary buffer with X buffer
-(global-set-key "\M-w" 'clipboard-kill-ring-save)
+;; (global-set-key "\M-w" 'clipboard-kill-ring-save)
 (global-set-key "\C-y" 'clipboard-yank)
 ;;^
+
+;; S-Insert yanks from primary
+(defun yank-primary ()
+  "Yanks from PRIMARY"
+  (interactive)
+  (insert
+   (x-get-selection 'PRIMARY)))
+(global-set-key (kbd "S-<insert>") 'yank-primary)
+;; ^
+
+;; from 'better-defaults.el'
+;; Allow clipboard from outside emacs
+(setq x-select-enable-clipboard t
+      x-select-enable-primary t
+      save-interprogram-paste-before-kill t
+      mouse-yank-at-point t)
+
+(defadvice kill-region (before slick-cut activate compile)
+  "When called interactively with no active region, kill a single
+line instead."
+  (interactive
+   (if mark-active
+       (list (region-beginning) (region-end))
+     (list (line-beginning-position) (line-beginning-position 2)))))
+
+;; ;TODO: check this, I guess I need to advice Meta-w instead
+(defadvice kill-ring-save (before slick-copy activate compile)
+  "When called interactively with no active region, copy a single
+line instead."
+  (interactive
+   (if mark-active
+       (list (region-beginning) (region-end))
+     (message "Copied line"))))
 
 ;; Let apropos search deeper
 (setq apropos-do-all t)

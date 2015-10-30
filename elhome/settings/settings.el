@@ -228,6 +228,8 @@
  '(wg-remap-bury-buffer nil)
  '(workgroups-everywhere t)
  '(workgroups-mode t)
+ '(x-select-enable-clipboard nil)
+ '(x-select-enable-primary t)
  '(yascroll:delay-to-hide 1.0))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
