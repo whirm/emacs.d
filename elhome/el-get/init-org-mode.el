@@ -2176,6 +2176,7 @@ value is a string containg the unaligned `org-mode' table."
 (defun org-repair-property-drawers ()
   "Fix properties drawers in current buffer.
  Ignore non Org buffers."
+  (interactive)
   (when (eq major-mode 'org-mode)
     (org-with-wide-buffer
      (goto-char (point-min))
