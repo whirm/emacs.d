@@ -54,6 +54,10 @@
 
 (bind-key "C-x C-z" 'magit-status)
 
+;; I want the stash list on the bottom so I can easily see the unpushed commits.
+(remove-hook 'magit-status-sections-hook 'magit-insert-stashes)
+(add-hook 'magit-status-sections-hook 'magit-insert-stashes t)
+
 ;; Toggle show whitespace-only changes with "W"
 (defun magit-toggle-whitespace ()
   (interactive)
