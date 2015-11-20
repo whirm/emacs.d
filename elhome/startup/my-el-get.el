@@ -630,13 +630,13 @@ command buffer, in which case returns the buffer directly."
                                ;; else (no buffer or a single one)
                                (car cmdbuffers))))
 
-                         (defun xars-attach-to-cmdbuf ()
+                         (defun wh:realgud-attach-to-cmdbuf ()
                            "Attaches current buffer to a debugging session."
                            (interactive)
                            (-when-let (cmdbuf (xars-grizzl-select-cmdbuf))
                              (message "Attaching current buffer %s to command buffer %s"
                                       (current-buffer) cmdbuf)
-                             (realgud-srcbuf-init-or-update (current-buffer) cmdbuf)))
+                             (realgud:cmdbuf-associate cmdbuf)))
 
                          ))
          (:name window-numbering
