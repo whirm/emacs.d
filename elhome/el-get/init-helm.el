@@ -47,6 +47,9 @@
 (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
 (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point)
 
+
+(bind-key "C-x 8 RET" 'helm-ucs)
+
 (defun helm-projectile-grep ()
   "like projectile-grep but with helm :D"
   (interactive)
