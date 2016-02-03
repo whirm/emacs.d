@@ -27,6 +27,9 @@
  ;; mu4e-html2text-command "w3m -dump -cols 120 -T text/html"
  mu4e-html2text-command 'mu4e-shr2text
 
+ ;; For dark themes
+ shr-color-visible-luminance-min 80
+
  ;;; Set mu4e as default mail user agent
  mail-user-agent 'mu4e-user-agent
 
@@ -44,6 +47,8 @@
  ;; smtpmail-debug-verb t
  message-send-mail-partially-limit nil
  mu4e-compose-complete-addresses nil
+
+ mu4e-doc-dir mu4e-builddir
  )
 
 (add-hook 'message-mode-hook 'orgtbl-mode 'append)
