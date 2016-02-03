@@ -755,6 +755,11 @@ command buffer, in which case returns the buffer directly."
                          (add-to-list 'company-backends 'company-ghc)
                          (custom-set-variables '(company-ghc-show-info t))))
          (:name structured-haskell-mode)
+         (:name systemd-mode
+                :after (progn
+                         (add-to-list 'company-backends 'systemd-company-backend)
+                         (add-hook 'systemd-mode-hook 'company-mode)
+                         ))
          ;; Full recipes I have to make into PR's to upstream
          (:name jenkins
                 :dpends (dash json)
