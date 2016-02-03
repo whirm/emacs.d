@@ -2250,6 +2250,15 @@ inherited by a parent headline."
              (recursive-edit))
          (message "All subtrees checked."))))))
 
+(defun org-fsck ()
+  "Runs several checks and fixes on an org mode buffer"
+  (interactive)
+  (org-repair-property-drawers)
+  (dmj:org-remove-empty-propert-drawers)
+  (dmj:org-remove-redundant-tags)
+  (wh:org-check-misformatted-subtree)
+  )
+
 ;; ^
 
 ;; GTD Flows
