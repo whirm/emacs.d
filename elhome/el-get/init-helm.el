@@ -26,7 +26,7 @@
 (add-to-list 'helm-boring-file-regexp-list "TAGS")
 
 (helm-mode 1)
-(helm-adaptative-mode 1)
+(helm-adaptive-mode 1)
 
 ;; Use helm
 (global-set-key (kbd "C-M-p") 'helm-semantic-or-imenu)
