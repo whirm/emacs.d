@@ -712,6 +712,7 @@ command buffer, in which case returns the buffer directly."
          (:name align
                 :after (progn
                          (require 'align)))
+         (:name graphviz-dot-mode)
 
          ;; From there on stuff in trial phase.
          (:name bts-github
