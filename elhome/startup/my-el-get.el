@@ -563,6 +563,9 @@
                          ;; Use opam switch to lookup ocamlmerlin binary
                          (setq merlin-command 'opam)
 
+                         (add-hook 'tuareg-mode-hook
+                                   (lambda () (add-hook 'before-save-hook 'ocp-indent-buffer nil 'local)))
+
                          ;; Take a look at https://github.com/the-lambda-church/merlin for more information
 
                          (require 'ocp-indent)
