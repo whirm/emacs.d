@@ -6,6 +6,10 @@
 ;; (toggle-debug-on-quit)
 ;; (toggle-debug-on-error)
 
+;; (set-fontset-font t 'unicode (font-spec :name "Symbola monospacified for TerminusMedium") nil 'append)
+(set-fontset-font t 'unicode (font-spec :name "Terminus (TTF)") nil)
+(set-fontset-font t 'unicode (font-spec :name "Symbola monospacified for Terminus (TTF)") nil 'append)
+
 (load "server")
 (unless (server-running-p) (server-start))
 
