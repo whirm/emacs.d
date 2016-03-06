@@ -54,10 +54,14 @@
 (add-hook 'message-mode-hook 'orgtbl-mode 'append)
 (add-hook 'message-mode-hook 'orgstruct++-mode 'append)
 (add-hook 'message-mode-hook 'turn-on-auto-fill 'append)
-;;(add-hook 'message-mode-hook 'turn-on-flyspell 'append)
+(add-hook 'message-mode-hook 'turn-on-flyspell 'append)
 ;;(add-hook 'mu4e-compose-mode-hook 'bbdb-mail-aliases 'append)
 (add-hook 'message-mode-hook
-          '(lambda () (setq fill-column 72))
+          '(lambda ()
+             (setq-local fill-column 72)
+             ;; This is should be removed once emacs 25.1 is out
+             (setq-local inhibit-point-motion-hooks t)
+             )
           'append)
 
 ;;; Use imagemagick if available
@@ -135,6 +139,6 @@
                                      )))))
                            ))
 
-(add-hook 'mu4e-view-mode-hook 'scan-for-ics)
+;; (add-hook 'mu4e-view-mode-hook 'scan-for-ics)
 
 (load "init-mu4e-private" t)
