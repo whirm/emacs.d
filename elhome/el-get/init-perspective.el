@@ -10,7 +10,6 @@
 
 (require 'perspective)
 (persp-mode t)
-(require 'persp-projectile)
 
 ;; loading code for our custom perspectives
 ;; taken from Magnar Sveen
