@@ -73,10 +73,10 @@
          (:name hydra)
          (:name which-key
                 :after (progn
-                         ;TODO: Customitzar aixo!
+                         ;; TODO: Customitzar aixo!
                          (which-key-mode)
                          (which-key-setup-side-window-right-bottom)
-                        ))
+                         ))
          (:name undo-tree-mode
                 :type builtin
                 :after (progn
@@ -114,8 +114,6 @@
                          ))
          (:name org-mode
                 ;; :checkout "release_8.2.10"
-                ;; :checkout "release_8.3beta" ;broken
-                ;; :checkout "release_8.1.2"
                 )
          (:name org-pomodoro
                 :after (progn
@@ -136,7 +134,6 @@
                 ;; :checkout "next"
                 :info "Documentation"
                 :compile "lisp/*.el"
-                :depends (cl-lib dash)
                 :load-path ("lisp"))
          (:name magit-gh-pulls)
          (:name magit-view-file)
@@ -312,7 +309,6 @@
                          ))
          (:name highlight-parentheses
                 :after (progn
-                         (require 'highlight-parentheses)
                          (setq hl-paren-colors '("orange red" "dark orange" "gold" "yellow" "khaki1"))
                          (add-hook 'prog-mode-hook (lambda ()
                                                      (highlight-parentheses-mode t)
@@ -800,7 +796,6 @@ command buffer, in which case returns the buffer directly."
          android-mode
          ansible-doc
          auto-install
-         autopair
          autopep8
          autosmiley
          cl-lib
