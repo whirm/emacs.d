@@ -83,9 +83,7 @@
   "Create a new branch from devel, set upstream and push"
   (let ((new_branch_name (read-from-minibuffer "New feature branch name: ")))
     (magit-fetch "upstream" nil)
-    (magit-process-wait)
     (magit-branch-and-checkout new_branch_name "upstream/devel")
-    ;; (magit-push-elsewhere new_branch_name "whirm" new_branch_name "-u")
     (magit-push-to-remote "whirm" "-u")
     ))
 
@@ -94,7 +92,6 @@
   "Create a new branch from next, set upstream and push"
   (let ((new_branch_name (read-from-minibuffer "New bugfix branch name: ")))
     (magit-fetch "upstream" nil)
-    (magit-process-wait)
     (magit-branch-and-checkout new_branch_name "upstream/next")
     (magit-push-to-remote "whirm" "-u")
     ))
@@ -103,14 +100,12 @@
   (interactive)
   "Rebase against upstream/devel"
   (magit-fetch "upstream" nil)
-  (magit-process-wait)
   (magit-rebase "upstream/devel" nil))
 
 (defun magit-wh-rebase-bugfix-branch ()
   (interactive)
   "Rebase against upstream/next"
   (magit-fetch "upstream" nil)
-  (magit-process-wait)
   (magit-rebase "upstream/next" nil))
 
 (magit-define-popup-action 'magit-branch-popup ?f  "Create new feature branch" 'magit-wh-new-feature-branch)
