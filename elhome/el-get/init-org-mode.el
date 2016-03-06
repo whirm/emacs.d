@@ -40,8 +40,8 @@
 ;; Pretty unicode bullets
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode t)))
-(setq org-bullets-bullet-list (quote ("⎈" "◉" "○" "∙" "∘")))
-
+(setq org-bullets-bullet-list (quote ("⭕" "⭗" "🞉" "🞆" "○" "∙" "∘" "🞄")))
+(setq org-ellipsis " ⸪")
 (setq org-pretty-entities t)
 
 (setq org-agenda-restore-windows-after-quit t)
@@ -2135,13 +2135,6 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-use-sub-superscripts nil)
 
 (setq org-odd-levels-only nil)
-
-;; Change looks of the ellipsized content
-(set-display-table-slot
- standard-display-table
- 'selective-display
- (let ((face-offset (* (face-id 'shadow) (lsh 1 22))))
-   (vconcat (mapcar (lambda (c) (+ face-offset c)) " … "))))
 
 ;; csv importer
 (defun yf/lisp-table-to-org-table (table &optional function)
