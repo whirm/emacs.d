@@ -1819,12 +1819,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
                                       ("Y" . ignore)
                                       ("Z" . ignore))))
 
-(defun bh/show-org-agenda ()
-  (interactive)
-  (if org-agenda-sticky
-      (switch-to-buffer "*Org Agenda( )*")
-    (switch-to-buffer "*Org Agenda*"))
-  (delete-other-windows))
+
 
 (require 'org-protocol)
 
