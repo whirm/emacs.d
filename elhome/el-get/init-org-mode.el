@@ -2144,7 +2144,7 @@ inherited by a parent headline."
        t nil))))
 
 (defun dmj:org-remove-empty-propert-drawers ()
-  "*Remove all empty property drawers in current file."
+  "Remove all empty property drawers in current file."
   (interactive)
   (unless (eq major-mode 'org-mode)
     (error "You need to turn on Org mode for this function."))

@@ -55,7 +55,7 @@
  '(bbdb-pop-up-window-size 5)
  '(bookmark-default-file "~/.emacs.d/var/bookmarks")
  '(browse-url-browser-function (quote browse-url-generic))
- '(browse-url-generic-program "iceweasel")
+ '(browse-url-generic-program "firefox")
  '(bts:project-cache-file "~/.emacs.d/var/bts-project")
  '(bts:query-cache-file "~/.emacs.d/var/bts-query")
  '(c-default-style
