@@ -46,6 +46,9 @@
  magit-restore-window-configuration t
  magit-set-upstream-on-push t
  magit-show-child-count t
+ magit-push-always-verify nil
+ magit-save-repository-buffers 'dontask
+ magit-status-expand-stashes nil
  magit-status-buffer-switch-function (quote switch-to-buffer))
 
 (require 'magit)
