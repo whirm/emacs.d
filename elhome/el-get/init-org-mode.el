@@ -2058,9 +2058,9 @@ The elements should not have any more newlines in them after
 applying FUNCTION ; the default converts them to spaces. Return
 value is a string containg the unaligned `org-mode' table."
   (unless (functionp function)
-    (setq function (lambda (x) (replace-regexp-in-string "\n" " " x))))
-  (mapconcat (lambda (x)                ; x is a line.
-               (concat "| " (mapconcat function x " | ") " |"))
+    (setq function (lambda (line) (replace-regexp-in-string "\n" " " line))))
+  (mapconcat (lambda (line)
+               (concat "| " (mapconcat function line " | ") " |"))
              table "\n"))
 
 (defun yf/csv-to-table (beg end)
