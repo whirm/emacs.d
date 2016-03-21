@@ -13,6 +13,7 @@
 (load "server")
 (unless (server-running-p) (server-start))
 
+
 ;; (add-hook 'org-mode-hook 'x-focus-frame)
 
 ;; EO Pre-init
@@ -401,7 +402,7 @@ line instead."
       `((".*" . ,(expand-file-name
                   (concat user-emacs-directory "var/backups")))))
 (setq auto-save-file-name-transforms
-      `((".*" , (concat user-emacs-directory "var/autosaves") t)))
+      `((".*" , (expand-file-name (concat user-emacs-directory "var/autosaves")) t)))
 
 ;; Make backups of files, even when they're in version control
 (setq vc-make-backup-files t)
