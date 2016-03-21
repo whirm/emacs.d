@@ -172,9 +172,15 @@ line instead."
 ;; Cycle through amount of spaces (all->one->none)
 (global-set-key (kbd "S-SPC") 'cycle-spacing)
 
-;; TODO decide if I want to set this to t
-;;set-mark-command-repeat-pop
+;; When popping the mark, continue popping until the cursor actually moves
+(defadvice pop-to-mark-command (around ensure-new-position activate)
+  (let ((p (point)))
+    (dotimes (i 10)
+      (when (= p (point)) ad-do-it))))
 
+;; Finally, a simple setq ensures we can quickly pop the mark several times by typing C-u C-SPC C-SPC, instead of having
+;; to type C-u C-SPC C-u C-SPC.
+(setq set-mark-command-repeat-pop t)
 
 ;;Not sure if I like those...
 (global-set-key "\C-x\C-m" 'execute-extended-command)
