@@ -2171,7 +2171,7 @@ inherited by a parent headline."
 
 ;; GTD Flows
 
-;TODO: Implement this some day
+;; TODO: Implement this some day
 ;; (defun wh:gtd-process-inbox ()
 ;;   "Interactively process all inbox entries"
 ;;   (interactive "P")
@@ -2189,9 +2189,18 @@ inherited by a parent headline."
                                            ;; also export the agenda views
                                            ;;(org-store-agenda-views)
                                            ))
+(require 'notifications)
+(defun wh-org-show-notification (msg)
+  (notifications-notify
+   :title "Org notification"
+   :body (format "\n%s" msg)
+   :timeout 60000
+   )
+  )
+
+;; (setq org-show-notification-handler 'wh-org-show-notification)
 
 ;; show appointment notifications trough DBUS notification API
-(require 'notifications)
 (defun wh-appt-display (min-to-app new-time msg)
   (notifications-notify
    :title (format "Appointment in %s minutes" min-to-app)
