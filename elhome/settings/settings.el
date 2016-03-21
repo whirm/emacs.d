@@ -155,39 +155,6 @@
  '(rm-excluded-modes (quote (" hl-p" " SliNav" " MRev")))
  '(safe-local-variable-values
    (quote
-    ((org-export-latex-append-header . "\\renewcommand\\@maketitle{%
-  \\newpage
-  \\null
-  \\vskip 2em%
-  \\begin{center}%
-  \\let \\footnote \\thanks
-    {% set colour and font for the title
-    \\color{NavyBlue}\\sffamily\\bfseries\\Huge
-    \\@title \\par}%
-    \\vskip 1.5em%
-    {% set colour and font for the author
-      \\color{CornflowerBlue}\\sffamily\\large
-      \\lineskip .5em%
-      \\begin{tabular}[t]{c}%
-        @author
-      \\end{tabular}\\par}%
-    \\vskip 1em%
-    {% set colour and font for the date
-    \\color{CornflowerBlue}\\sffamily\\large \\@date}%
-  \\end{center}%
-  \\par
-  \\vskip 1.5em}
-")
-     (org-export-latex-append-header . "\\usepackage{graphicx}
-\\usepackage{multicol}
-\\geometry{headheight=47pt}
-\\fancyhead[L]{\\LARGE This is the header title}
-\\fancyfoot[L]{\\small Overridden filename\\\\ \\today}
-")
-     (org-confirm-babel-evaluate)
-     (projectile-project-compilation-cmd . "ANSIBLE_NOCOWS=1 ansible-playbook forums_tribler.yml")
-     (python-shell-interpreter . "ipython3")
-     (python-shell-interpreter . ipython3)
      (eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"
            (add-hook
             (quote write-contents-functions)

@@ -224,6 +224,9 @@
 ;; Use full outline paths for refile targets - we file directly with IDO
 (setq org-refile-use-outline-path t)
 
+;; Cache refile targets
+(setq org-refile-use-cache t)
+
 ;; Targets complete directly with IDO
 (setq org-outline-path-complete-in-steps nil)
 
