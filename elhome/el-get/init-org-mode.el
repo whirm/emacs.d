@@ -410,7 +410,7 @@
                nil)
 
               ("n" "Next tasks"
-               ((agenda "" nil)
+               (
                 (tags-todo "-CANCELLED/!NEXT"
                            ((org-agenda-overriding-header (concat "Project Next Tasks"
                                                                   (if bh/hide-scheduled-and-waiting-next-tasks
