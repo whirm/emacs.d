@@ -1944,6 +1944,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (setq org-file-apps (quote ((auto-mode . emacs)
                             ("\\.mm\\'" . system)
                             ("\\.x?html?\\'" . system)
+                            ("ogg" . "vlc %s")
                             ("\\.pdf\\'" . system))))
 
 ;; Overwrite the current window with the agenda
