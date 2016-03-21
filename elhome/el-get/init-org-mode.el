@@ -366,7 +366,7 @@
                             (org-tags-match-list-sublevels 'indented)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
-                (tags-todo "-CANCELLED/!NEXT"
+                (tags-todo "-CANCELLED-SOMEDAY/!NEXT"
                            ((org-agenda-overriding-header (concat "Review next actions list:\n - Is it short? (less than 15 minutes)\n - Is it actionable?\n - Is it clear?\n - Am I committed to do it?\n - Does it depend on something else?\n - Is it clear when it's done?"
                                                                   (if bh/hide-scheduled-and-waiting-next-tasks
                                                                       ""
