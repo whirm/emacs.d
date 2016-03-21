@@ -1987,6 +1987,12 @@ Late deadlines first, then scheduled, then non-late deadlines"
 
 (setq org-startup-folded t)
 
+;; Due to the prettyfied indentation, 120 wil make the end of the word disappear behind the right margin, make it
+;; shorter for org-mode buffers only.
+(add-hook 'org-mode-hook
+          '(lambda () (setq-local fill-column 100))
+          'append)
+
 ;; I have all of this in the mu4e init file
 ;;(add-hook 'message-mode-hook 'orgstruct++-mode 'append)
 ;;(add-hook 'message-mode-hook 'turn-on-auto-fill 'append)
