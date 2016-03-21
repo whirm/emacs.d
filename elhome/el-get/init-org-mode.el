@@ -674,10 +674,16 @@ A prefix arg forces clock in of the default task."
                             ("HOLD"      . ?H)
                             ("SOMEDAY"   . ?S)
                             (:endgroup)
+                            (:startgroup)
                             ("PERSONAL"  . ?p)
                             ("WORK"      . ?w)
+                            (:endgroup)
+                            (:startgroup)
                             ("NOTE"      . ?n)
-                            ("FLAGGED"   . ?:))))
+                            ("DECISION"  . ?d)
+                            (:endgroup)
+                            ("FLAGGED"   . ?:)
+                            )))
 
 ;; Allow setting single tags without the menu
 ;; (setq org-fast-tag-selection-single-key (quote expert))
