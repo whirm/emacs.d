@@ -447,9 +447,15 @@
                nil)
 
               (" " "Today"
-               ((agenda "" nil)
-                (tags-todo "+PRIORITY=\"A\"\"/NEXT"
-                           ((org-agenda-overriding-header (concat "Today's Tasks: REMEMBER: Productivity first, org after, pleasure last"
+               ((agenda ""
+                        ((org-agenda-max-entries 50)
+                         ;; (search "SCHEDULED<\"<now>\"")
+                         )
+                        nil
+                        )
+                (tags-todo "+FLAGGED/NEXT"
+                           ((org-agenda-max-entries 50)
+                            (org-agenda-overriding-header (concat "Today's Tasks:"
                                                                   (if bh/hide-scheduled-and-waiting-next-tasks
                                                                       ""
                                                                     " (including WAITING and SCHEDULED tasks)")))
