@@ -2009,6 +2009,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 ;;          '(lambda () (setq fill-column 72))
 ;;          'append)
 
+;; TODO(emilon): This will probably work on emacs 25
 ;; flyspell mode for spell checking everywhere NOPE makes org-capture block all the time when typing!
 ;;(add-hook 'org-mode-hook 'turn-on-flyspell 'append)
 
