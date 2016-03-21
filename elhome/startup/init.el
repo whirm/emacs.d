@@ -198,35 +198,6 @@ line instead."
 ;; make scroll up and down symmetric
 (setq scroll-preserve-screen-position 'always)
 
-;; Only show line numbers when being asked for line number
-(defun goto-line-with-feedback ()
-  "Show line numbers temporarily, while prompting for the line number input."
-  (interactive)
-  (unwind-protect
-      (progn
-        (setq linum-format 'dynamic)
-        (linum-mode 1)
-        (goto-line (read-number "Goto line: ")))
-    (linum-mode -1)))
-
-(global-set-key [remap goto-line] 'goto-line-with-feedback)
-
-;; Relative jump line
-(defun jump-line-with-feedback ()
-  "Show line numbers temporarily, while prompting for the amount of lines to jump."
-  (interactive)
-  (unwind-protect
-      (progn
-        (setq linum-format 'linum-relative)
-        (linum-mode 1)
-        (next-line (read-number "Jump to line: ")))
-    (progn
-      (setq linum-format 'dynamic)
-      (linum-mode -1))
-    )
-  )
-(global-set-key (kbd "M-g f") 'jump-line-with-feedback)
-
 ;; Auto refresh buffers
 ;;(global-auto-revert-mode 1)
 (setq revert-without-query t)
