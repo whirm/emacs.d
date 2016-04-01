@@ -73,7 +73,7 @@
  '(cua-rectangle-mark-key [C-M-return])
  '(custom-safe-themes
    (quote
-    ("d0fa3bd27acca62a8d53d7098b8037db4d966a38812f17b4d200cb94720229ca" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "6a37be365d1d95fad2f4d185e51928c789ef7a4ccf17e7ca13ad63a8bf5b922f" "025354235e98db5e7fd9c1a74622ff53ad31b7bde537d290ff68d85665213d85" "3a727bdc09a7a141e58925258b6e873c65ccf393b2240c51553098ca93957723" "6fe6ab4abe97a4f13533e47ae59fbba7f2919583f9162b440dd06707b01f7794" default)))
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(default-input-method "catalan-prefix")
  '(dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$|.*\\.pyc$")
  '(ecb-options-version "2.40")
@@ -151,26 +151,6 @@
    (quote
     (" hl-p" " SliNav" " MRev" " Helm" " me" " Undo-Tree" " AC" " GitGutter" " pair" " Rbow" " Elpy" " ||")))
  '(rm-excluded-modes (quote (" hl-p" " SliNav" " MRev")))
- '(safe-local-variable-values
-   (quote
-     (eval ignore-errors "Write-contents-functions is a buffer-local alternative to before-save-hook"
-           (add-hook
-            (quote write-contents-functions)
-            (lambda nil
-              (delete-trailing-whitespace)
-              nil))
-           (require
-            (quote whitespace))
-           "Sometimes the mode needs to be toggled off and on."
-           (whitespace-mode 0)
-           (whitespace-mode 1))
-     (whitespace-line-column . 80)
-     (whitespace-style face tabs trailing lines-tail)
-     (test-case-name . twisted\.protocols\.test\.test_basic)
-     (helm-grep-preferred-ext . \.py)
-     (pydb-cmdline . "/var/data/feina/code/delft/tribler/Tribler/Main/tribler.py")
-     (eval setenv "DISPLAY" ":1")
-     (header-auto-update-enabled))))
  '(scroll-bar-mode nil)
  '(semantic-imenu-auto-rebuild-directory-indexes t)
  '(semantic-mode t)
@@ -202,11 +182,8 @@
  '(wg-buffer-auto-association (quote strong))
  '(wg-load-last-workgroup t)
  '(wg-remap-bury-buffer nil)
- '(which-key-separator "  > ")
  '(workgroups-everywhere t)
  '(workgroups-mode t)
- '(x-select-enable-clipboard nil)
- '(x-select-enable-primary t)
  '(yascroll:delay-to-hide 1.0))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -49,6 +49,8 @@
  mu4e-compose-complete-addresses nil
 
  mu4e-doc-dir mu4e-builddir
+
+ mu4e-change-filenames-when-moving t
  )
 
 (add-hook 'message-mode-hook 'orgtbl-mode 'append)
