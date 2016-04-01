@@ -589,6 +589,18 @@ point reaches the beginning or end of the buffer, stop there."
 ;; EO Utility
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Optimizations/hacks
+
+
+;; Speed up by disabling VC stuff I don't use
+(remove-hook 'find-file-hooks 'vc-find-file-hook)
+(setq vc-handled-backends nil)
+
+;; EO Optimizations/hacks
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (message "And we are ready to go!")
 
 ;; Stuff automatically added by emacs:
