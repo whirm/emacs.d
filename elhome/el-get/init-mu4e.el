@@ -141,4 +141,17 @@
 
 ;; (add-hook 'mu4e-view-mode-hook 'scan-for-ics)
 
+
+;; From http://mbork.pl/2015-11-28_Fixing_mml-attach-file_using_advice
+(defun mml-attach-file--go-to-eob (orig-fun &rest args)
+  "Go to the end of buffer before attaching files."
+  (save-excursion
+    (save-restriction
+      (widen)
+      (goto-char (point-max))
+      (apply orig-fun args))))
+
+(advice-add 'mml-attach-file :around #'mml-attach-file--go-to-eob)
+
+
 (load "init-mu4e-private" t)
