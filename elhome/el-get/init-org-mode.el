@@ -1739,7 +1739,7 @@ Late deadlines first, then scheduled, then non-late deadlines"
 (require 'org-crypt)
 ;; Encrypt all entries before saving
 (org-crypt-use-before-save-magic)
-(setq org-tags-exclude-from-inheritance (quote ("crypt")))
+(setq org-tags-exclude-from-inheritance '("crypt" "@errand" "@office" "@home" "@computer" "@anywhere"))
 ;; GPG key to use for encryption
 (setq org-crypt-key "F0B66B40")
 
