@@ -310,6 +310,16 @@
                                                      (autopair-mode t)
                                                      ))
                          ))
+         (:name autopair
+                :before (progn
+                          (dolist (hook '(prog-mode-hook
+                                          yaml-mode-hook
+                                          org-mode-hook
+                                          systemd-mode-hook
+                                          ))
+                            (add-hook hook 'autopair-mode))
+
+                          ))
          (:name highlight-parentheses
                 :after (progn
                          (setq hl-paren-colors '("orange red" "dark orange" "gold" "yellow" "khaki1"))
