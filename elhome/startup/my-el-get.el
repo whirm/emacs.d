@@ -73,9 +73,10 @@
          (:name hydra)
          (:name which-key
                 :after (progn
-                         ;; TODO: Customitzar aixo!
-                         (which-key-mode)
-                         (which-key-setup-side-window-right-bottom)
+                         (which-key-mode t)
+                         (setq
+                          which-key-separator "  > "
+                          which-key-popup-type 'minibuffer)
                          ))
          (:name undo-tree-mode
                 :type builtin
