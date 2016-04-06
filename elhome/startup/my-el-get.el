@@ -69,6 +69,8 @@
                                                         (setq-local helm-dash-docsets '("Python 2" "Twisted"))))
                          (add-hook 'tuareg-mode-hook '(lambda ()
                                                         (setq-local helm-dash-docsets '("OCaml"))))
+                         (add-hook 'web-mode-hook '(lambda ()
+                                                     (setq-local helm-dash-docsets '("HTML"))))
                          ))
          (:name hydra)
          (:name which-key
