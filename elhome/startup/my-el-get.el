@@ -327,8 +327,15 @@
                 :after (progn
                          (require 'yasnippet)
 
-                         (yas-global-mode 1)
-                         ;;(yas-load-directory "~/.emacs.d/elhome/snippets")
+                         (dolist (hook '(prog-mode-hook
+                                         yaml-mode-hook
+                                         org-mode-hook
+                                         systemd-mode-hook
+                                         latex-mode-hook
+                                         ansible-mode-hook
+                                         ))
+                           (add-hook hook 'yas-minor-mode-on))
+
                          (setq yas-snippet-dirs (delete "~/.emacs.d/snippets" yas-snippet-dirs)
                                yas-prompt-functions '(yas-dropdown-prompt
                                                       yas-completing-prompt
