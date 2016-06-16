@@ -111,9 +111,8 @@
 ;;^
 
 ;; Save point position between sessions
-(setq-default save-place t)
 (setq save-place-file (concat user-emacs-directory "var/places"))
-(require 'saveplace)
+(save-place-mode t)
 ;;^
 
 ;; Sync primary buffer with X buffer
