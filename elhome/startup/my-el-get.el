@@ -80,11 +80,10 @@
                           which-key-separator "  > "
                           which-key-popup-type 'minibuffer)
                          ))
-         (:name undo-tree-mode
-                :type builtin
+         (:name undo-tree
                 :after (progn
                          (add-hook 'emacs-startup-hook (lambda ()
-                                                         (undo-tree-mode t)
+                                                         (global-undo-tree-mode t)
                                                          ))))
          (:name visual-regexp
                 :after (progn
