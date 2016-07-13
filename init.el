@@ -17,8 +17,11 @@
         el-get-user-package-directory (concat user-emacs-directory "elhome/el-get/")
         bcc-cache-directory           (concat user-emacs-directory "var/byte-cache/")
         bcc-blacklist                 '("/\\.recentf$" "/history$" "var/el-get/")
-        el-get-git-shallow-clone t
+        custom-theme-directory        (concat user-emacs-directory "elhome/themes")
+        custom-file                   (concat user-emacs-directory "elhome/custom.el")
+        el-get-git-shallow-clone      t
         )
+  (load custom-file)
 
   (let ((el-get-install-dir (concat el-get-dir "el-get/")))
     (add-to-list 'load-path el-get-install-dir)
