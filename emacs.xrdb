@@ -10,6 +10,6 @@ Emacs*horizontalScrollBars: off
 Emacs*font: Terminus 9
 !Emacs*font: -*-terminus-bold-r-*-*-*-*-100-100-*-*-*-* !Too big
 !Emacs*font: -*-terminus-*-r-*-*-14-*-*-*-*-*-*-* !Too big
-! basic colors so the window dosen't pop up white and then immediately go dark
+! basic colors so the window dosen`t pop up white and then immediately go dark
 Emacs*background: #191717
 Emacs*foreground: #D2DEC4
