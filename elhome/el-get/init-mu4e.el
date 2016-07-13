@@ -51,6 +51,21 @@
  mu4e-doc-dir mu4e-builddir
 
  mu4e-change-filenames-when-moving t
+
+ mu4e-attachment-dir "/tmp/"
+ mu4e-auto-retrieve-keys t
+ mu4e-compose-complete-only-after "2013-01-01"
+ mu4e-compose-complete-only-personal t
+ mu4e-compose-dont-reply-to-self t
+ mu4e-confirm-quit nil
+ mu4e-headers-visible-lines 15
+ mu4e-maildir "~/.mail"
+ mu4e-save-multiple-attachments-without-asking t
+ mu4e-update-interval 1200
+ mu4e-view-image-max-height 1000
+ mu4e-view-image-max-width 1200
+ mu4e-view-prefer-html t
+ mu4e-view-show-addresses t
  )
 
 (add-hook 'message-mode-hook 'orgtbl-mode 'append)
