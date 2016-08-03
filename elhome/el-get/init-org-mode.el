@@ -170,10 +170,12 @@
   (setq org-mobile-directory "/home/nexus/org")
   )
 
+(setq wh-main-org-file (concat org-directory "gtd.org"))
+
 (setq org-agenda-diary-file (concat org-directory "diary.org.pgp"))
 (setq org-default-notes-file (concat org-directory "notes.org"))
 (setq org-agenda-files (list
-                        (concat org-directory "gtd.org")
+                        wh-main-org-file
                         (concat org-directory "refile.org")
                         (concat org-directory "someday.org")
                         (concat org-directory "mobile.org")
@@ -272,7 +274,8 @@
                  '(todo-state-down effort-up category-keep))))
 
               ("x" "Agenda"
-               ((agenda "" nil)
+               (
+                (agenda "" nil)
                 (tags "REFILE"
                       ((org-agenda-overriding-header "Tasks to Refile\nDoes it take les than 5 minutes? Do it now!")
                        (org-tags-match-list-sublevels nil)))
@@ -355,9 +358,11 @@
                (
                 (tags "REFILE"
                       ((org-agenda-overriding-header "Tasks to Refile")
-                       (org-tags-match-list-sublevels nil)))
+                       (org-tags-match-list-sublevels nil)
+                       (org-agenda-max-entries 10)))
                 (tags-todo "-SOMEDAY-NOTES-@office-@home-@errands-@anywhere-@computer"
                            ((org-agenda-overriding-header "Tasks with no context")
+                            (org-agenda-skip-function 'wh/skip-projects)
                             (org-tags-match-list-sublevels t)))
                 )
                nil)
@@ -428,15 +433,32 @@
                nil)
 
               (" " "Today"
-               ((agenda ""
-                        ((org-agenda-max-entries 50)
-                         ;; (search "SCHEDULED<\"<now>\"")
+               (
+                (tags-todo "DEADLINE<\"<today>\"" ((org-agenda-overriding-header "OVERDUE")
+                                                   ))
+                (tags-todo "DEADLINE=\"<today>\"" ((org-agenda-overriding-header "DEADLINE today")
+                                                   ))
+                (agenda ""
+                        ((org-agenda-skip-function 'wh/skip-not-yet-scheduled)
                          )
-                        nil
                         )
+                ;; (tags-todo "SCHEDULED<=\"<now>\"-SCHEDULED=\"<today>\"-STYLE=\"habit\""
+                ;;            ((org-agenda-overriding-header "Scheduled now")))
+
+                ;; (tags-todo "STYLE=\"habit\"&SCHEDULED<=\"<today>\""
+                ;;            ((org-agenda-overriding-header "Day Habits")
+                ;;             (org-agenda-sorting-strategy '(timestamp-up))
+                ;;             ;; (org-agenda-max-entries 3)
+                ;;             ))
+
+                ;; (tags-todo "STYLE=\"habit\"&SCHEDULED<=\"<now>\"-SCHEDULED=\"<today>\""
+                ;;            ((org-agenda-overriding-header "Now Habits")
+                ;;             ;; (org-agenda-max-entries 3)
+                ;;             (org-agenda-sorting-strategy '(timestamp-down))))
+
+
                 (tags-todo "+FLAGGED/NEXT"
-                           ((org-agenda-max-entries 50)
-                            (org-agenda-overriding-header (concat "Today's Tasks:"
+                           ((org-agenda-overriding-header (concat "Today's Tasks:"
                                                                   (if bh/hide-scheduled-and-waiting-next-tasks
                                                                       ""
                                                                     " (including WAITING and SCHEDULED tasks)")))
@@ -446,9 +468,10 @@
                             (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
                             (org-agenda-sorting-strategy
-                             '(priority-down effort-up))))
-                )
-               nil)
+                             '(priority-down effort-up)))))
+               ((org-agenda-todo-ignore-scheduled 'future)
+                (org-agenda-inhibit-startup t))
+               )
               )))
 
 (defun bh/org-auto-exclude-function (tag)
