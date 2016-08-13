@@ -599,7 +599,15 @@ command buffer, in which case returns the buffer directly."
                                company-minimum-prefix-length 1
                                company-quickhelp-mode t
                                company-show-numbers t)
-                         (global-company-mode 1)
+                         ;; (global-company-mode 1)
+                         (dolist (hook '(prog-mode-hook
+                                         yaml-mode-hook
+                                         ;; org-mode-hook
+                                         systemd-mode-hook
+                                         latex-mode-hook
+                                         ansible-mode-hook
+                                         ))
+                           (add-hook hook 'company-mode))
                          ))
          (:name company-quickhelp)
          (:name elpy
