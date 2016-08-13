@@ -578,9 +578,10 @@ command buffer, in which case returns the buffer directly."
                 :after (progn
                          (window-numbering-mode t)
                          ))
-         (:name ace-jump-mode
+         (:name avy
                 :after (progn
-                         (global-set-key (kbd "M-SPC")  'ace-jump-word-mode)
+                         (global-set-key (kbd "M-SPC")  'avy-goto-char)
+                         (global-set-key [remap goto-line] 'avy-goto-line)
                          ))
          (:name pyvenv) ;; elpy fails to install if this is not installed before?
          (:name virtualenv)
