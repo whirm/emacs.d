@@ -111,8 +111,20 @@
   (magit-fetch "upstream" nil)
   (magit-rebase "upstream/next" nil))
 
+(defun magit-wh-next-to-devel ()
+  (interactive)
+  "Create a next-to-devel branch"
+  (magit-fetch "upstream" nil)
+  (magit-run-git "branch" "-D" "next_to_devel")
+  (magit-branch-and-checkout "next_to_devel" "upstream/devel")
+  (magit-rebase "upstream/next" nil)
+  ;; (magit-push-to-remote "whirm" "-u")
+  )
+
 (magit-define-popup-action 'magit-branch-popup ?f  "Create new feature branch" 'magit-wh-new-feature-branch)
 (magit-define-popup-action 'magit-branch-popup ?F  "Create new bugfix branch" 'magit-wh-new-bugfix-branch)
+
+(magit-define-popup-action 'magit-branch-popup ?N  "Create next-to-devel branch" 'magit-wh-next-to-devel)
 
 (magit-define-popup-action 'magit-rebase-popup ?u  "Rebase against feature branch" 'magit-wh-rebase-feature-branch)
 (magit-define-popup-action 'magit-rebase-popup ?U  "Rebase against bugfix branch" 'magit-wh-rebase-bugfix-branch)
