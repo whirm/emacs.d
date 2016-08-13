@@ -133,11 +133,14 @@
          (:name org-sync)
          (:name mu4e)
          (:name magit
-                ;; :checkout "next"
-                :info "Documentation"
-                :compile "lisp/*.el"
-                :load-path ("lisp"))
-         (:name magit-gh-pulls)
+                ;; :shallow nil
+                ;; :checkout "bfc6f6d88619221506e246390e5fbb39087564ec"
+                ;; :info "Documentation"
+                ;; :compile "lisp/*.el"
+                ;; :load-path ("lisp")
+                :after (progn
+                         (require 'git-rebase)
+                         (add-hook 'after-save-hook 'magit-after-save-refresh-status)))
          (:name magit-view-file)
          (:name org-magit)
          (:name elisp-slime-nav
