@@ -649,7 +649,8 @@ command buffer, in which case returns the buffer directly."
          (:name elfeed
                 :after (progn
                          (setq elfeed-db-directory (concat user-emacs-directory "/var/elfeed/")
-                               elfeed-sort-order 'ascending)))
+                               elfeed-sort-order 'ascending
+                               elfeed-use-curl t)))
          (:name align
                 :after (progn
                          (require 'align)))
