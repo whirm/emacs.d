@@ -374,6 +374,21 @@
                             (org-tags-match-list-sublevels 'indented)
                             (org-agenda-sorting-strategy
                              '(category-keep))))
+
+                (tags-todo "-CANCELLED-SOMEDAY/!NEXT"
+                           ((org-agenda-overriding-header (concat "Missing effort:"
+                                                                  (if bh/hide-scheduled-and-waiting-next-tasks
+                                                                      ""
+                                                                    " (including WAITING and SCHEDULED tasks)")))
+                            (org-agenda-skip-function 'wh/skip-projects-and-habits-and-entries-with-effort)
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
+                            (org-agenda-sorting-strategy
+                             '(todo-state-down effort-up category-keep))))
+
+
                 (tags-todo "-CANCELLED-SOMEDAY/!NEXT"
                            ((org-agenda-overriding-header (concat "Review next actions list:\n - Is it short? (less than 15 minutes)\n - Is it actionable?\n - Is it clear?\n - Am I committed to do it?\n - Does it depend on something else?\n - Is it clear when it's done?"
                                                                   (if bh/hide-scheduled-and-waiting-next-tasks
@@ -891,6 +906,26 @@ Callers of this function already widen the buffer view."
        ((bh/is-project-p)
         next-headline)
        ((and (bh/is-task-p) (not (bh/is-project-subtree-p)))
+        next-headline)
+       (t
+        nil)))))
+
+(defun wh/skip-projects-and-habits-and-entries-with-effort ()
+  "Skip trees that are projects, tasks that are habits, taks with effort assigned"
+  (save-restriction
+    (widen)
+    (let ((next-headline (save-excursion (or (outline-next-heading) (point-max)))))
+      (cond
+       ((org-is-habit-p)
+        next-headline)
+       ((and bh/hide-scheduled-and-waiting-next-tasks
+             (member "WAITING" (org-get-tags-at)))
+        next-headline)
+       ((bh/is-project-p)
+        next-headline)
+       ((and (bh/is-task-p) (not (bh/is-project-subtree-p)))
+        next-headline)
+       ((and (org-entry-get nil "Effort"))
         next-headline)
        (t
         nil)))))
