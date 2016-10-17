@@ -663,6 +663,7 @@ command buffer, in which case returns the buffer directly."
          (:name bts-github
                 :after (progn
                          (require 'bts-github)))
+         (:name solidity-mode)
          (:name yaml-mode
                 :after (progn
                          (add-hook 'yaml-mode-hook (lambda ()
